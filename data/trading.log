@@ -34,3 +34,5 @@
 2025-08-17 00:22:36,139 INFO Out-of-sample results:
 2025-08-17 00:22:36,139 INFO Total P&L: -2.97, Trades: 2, Win Rate: 0.00%
 2025-08-17 00:22:36,139 INFO Max Drawdown: 3.34, Sharpe Ratio: -2.67
+2025-08-17 13:33:45,197 INFO Starting backtest for BTCUSDT from 2024-08-01 to 2025-08-01 on 4h
+2025-08-17 13:33:45,199 ERROR No data retrieved for backtest.
