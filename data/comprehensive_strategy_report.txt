@@ -1,0 +1,35 @@
+
+=== COMPREHENSIVE TRADING STRATEGY ANALYSIS ===
+Period: 2020-08 to 2025-08
+
+PERFORMANCE SUMMARY:
+- Total Months Analyzed: 61
+- Profitable Months: 50 (82.0%)
+- Average Monthly Return: 56.50%
+- Best Month: 232.57%
+- Worst Month: -36.06%
+
+TARGET ACHIEVEMENT:
+- Target Monthly Return: 20%
+- Months Above Target: 37 (60.7%)
+
+RISK METRICS:
+- Average Monthly Drawdown: 33.26%
+- Maximum Drawdown: 53.32%
+- Average Win Rate: 32.9%
+- Average Sharpe Ratio: 0.937
+
+TRADING ACTIVITY:
+- Total Trades: 2694
+- Average Trades per Month: 44.2
+
+ROBUSTNESS ANALYSIS:
+- Monthly Return Volatility: 69.63%
+- Consistency Score: 30.4/100
+
+STRATEGY ASSESSMENT:
+✅ EXCELLENT: Strategy consistently achieves target returns
+✅ ROBUST: High profitability consistency
+⚠️  VOLATILE: High volatility in returns
+✅ GOOD: Decent risk-adjusted returns
+❌ LIKELY OVERFITTING: High performance inconsistency
