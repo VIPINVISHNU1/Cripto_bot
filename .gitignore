@@ -1,0 +1,54 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Data files (keep structure but ignore content)
+data/trades_*.csv
+data/equity_curve_*.png
+data/optimization_results/*.json
+data/optimization_results/*.csv
+data/optimization_results/*.txt
+
+# API keys and secrets
+config_live.yaml
+.env
+secrets.yaml
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# PyCharm
+.idea/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
