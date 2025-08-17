@@ -1,0 +1,1042 @@
+[
+  {
+    "combination_id": 0,
+    "params": {
+      "stop_loss_pct": 0.01,
+      "take_profit_pct": 0.02,
+      "position_size": 0.001,
+      "imbalance_threshold": 0.0002
+    },
+    "in_sample": {
+      "params": {
+        "stop_loss_pct": 0.01,
+        "take_profit_pct": 0.02,
+        "position_size": 0.001,
+        "imbalance_threshold": 0.0002
+      },
+      "total_pnl": -21.118452620331304,
+      "num_trades": 50,
+      "win_rate": 0.34,
+      "avg_profit_per_month": -11.147613256003785,
+      "volatility": 0.002642501293596868,
+      "max_drawdown": 25.33873085792402,
+      "sharpe_ratio": -1.6982218511358138,
+      "profit_factor": 0.5025407971582604,
+      "avg_win": 1.2549517456074268,
+      "avg_loss": -1.286443402898714,
+      "largest_win": 2.128196567653289,
+      "largest_loss": -1.4969058898213496,
+      "final_balance": 9978.88154737967
+    },
+    "out_sample": {
+      "params": {
+        "stop_loss_pct": 0.01,
+        "take_profit_pct": 0.02,
+        "position_size": 0.001,
+        "imbalance_threshold": 0.0002
+      },
+      "total_pnl": -5.597572690685333,
+      "num_trades": 28,
+      "win_rate": 0.4642857142857143,
+      "avg_profit_per_month": -6.9077072718024946,
+      "volatility": 0.0027331442565532793,
+      "max_drawdown": 9.550814444408388,
+      "sharpe_ratio": -0.9805328739843655,
+      "profit_factor": 0.7154617797257113,
+      "avg_win": 1.082685243361136,
+      "avg_loss": -1.3114987236253404,
+      "largest_win": 2.160420547100435,
+      "largest_loss": -1.5354376710890585,
+      "final_balance": 9994.402427309316
+    },
+    "timestamp": "2025-08-17T16:19:46.905218"
+  },
+  {
+    "combination_id": 1,
+    "params": {
+      "stop_loss_pct": 0.01,
+      "take_profit_pct": 0.02,
+      "position_size": 0.001,
+      "imbalance_threshold": 0.0005
+    },
+    "in_sample": {
+      "params": {
+        "stop_loss_pct": 0.01,
+        "take_profit_pct": 0.02,
+        "position_size": 0.001,
+        "imbalance_threshold": 0.0005
+      },
+      "total_pnl": -21.118452620331304,
+      "num_trades": 50,
+      "win_rate": 0.34,
+      "avg_profit_per_month": -11.147613256003785,
+      "volatility": 0.002642501293596868,
+      "max_drawdown": 25.33873085792402,
+      "sharpe_ratio": -1.6982218511358138,
+      "profit_factor": 0.5025407971582604,
+      "avg_win": 1.2549517456074268,
+      "avg_loss": -1.286443402898714,
+      "largest_win": 2.128196567653289,
+      "largest_loss": -1.4969058898213496,
+      "final_balance": 9978.88154737967
+    },
+    "out_sample": {
+      "params": {
+        "stop_loss_pct": 0.01,
+        "take_profit_pct": 0.02,
+        "position_size": 0.001,
+        "imbalance_threshold": 0.0005
+      },
+      "total_pnl": -5.597572690685333,
+      "num_trades": 28,
+      "win_rate": 0.4642857142857143,
+      "avg_profit_per_month": -6.9077072718024946,
+      "volatility": 0.0027331442565532793,
+      "max_drawdown": 9.550814444408388,
+      "sharpe_ratio": -0.9805328739843655,
+      "profit_factor": 0.7154617797257113,
+      "avg_win": 1.082685243361136,
+      "avg_loss": -1.3114987236253404,
+      "largest_win": 2.160420547100435,
+      "largest_loss": -1.5354376710890585,
+      "final_balance": 9994.402427309316
+    },
+    "timestamp": "2025-08-17T16:19:47.046207"
+  },
+  {
+    "combination_id": 2,
+    "params": {
+      "stop_loss_pct": 0.01,
+      "take_profit_pct": 0.02,
+      "position_size": 0.002,
+      "imbalance_threshold": 0.0002
+    },
+    "in_sample": {
+      "params": {
+        "stop_loss_pct": 0.01,
+        "take_profit_pct": 0.02,
+        "position_size": 0.002,
+        "imbalance_threshold": 0.0002
+      },
+      "total_pnl": -42.23690524066261,
+      "num_trades": 50,
+      "win_rate": 0.34,
+      "avg_profit_per_month": -22.29522651200757,
+      "volatility": 0.00529108746525023,
+      "max_drawdown": 50.67746171584986,
+      "sharpe_ratio": -1.6975861067163025,
+      "profit_factor": 0.5025407971582604,
+      "avg_win": 2.5099034912148537,
+      "avg_loss": -2.572886805797428,
+      "largest_win": 4.256393135306578,
+      "largest_loss": -2.9938117796426993,
+      "final_balance": 9957.763094759337
+    },
+    "out_sample": {
+      "params": {
+        "stop_loss_pct": 0.01,
+        "take_profit_pct": 0.02,
+        "position_size": 0.002,
+        "imbalance_threshold": 0.0002
+      },
+      "total_pnl": -11.195145381370667,
+      "num_trades": 28,
+      "win_rate": 0.4642857142857143,
+      "avg_profit_per_month": -13.815414543604989,
+      "volatility": 0.005468829742302936,
+      "max_drawdown": 19.101628888816776,
+      "sharpe_ratio": -0.9798714944118239,
+      "profit_factor": 0.7154617797257113,
+      "avg_win": 2.165370486722272,
+      "avg_loss": -2.6229974472506807,
+      "largest_win": 4.32084109420087,
+      "largest_loss": -3.070875342178117,
+      "final_balance": 9988.804854618627
+    },
+    "timestamp": "2025-08-17T16:19:47.187132"
+  },
+  {
+    "combination_id": 3,
+    "params": {
+      "stop_loss_pct": 0.01,
+      "take_profit_pct": 0.02,
+      "position_size": 0.002,
+      "imbalance_threshold": 0.0005
+    },
+    "in_sample": {
+      "params": {
+        "stop_loss_pct": 0.01,
+        "take_profit_pct": 0.02,
+        "position_size": 0.002,
+        "imbalance_threshold": 0.0005
+      },
+      "total_pnl": -42.23690524066261,
+      "num_trades": 50,
+      "win_rate": 0.34,
+      "avg_profit_per_month": -22.29522651200757,
+      "volatility": 0.00529108746525023,
+      "max_drawdown": 50.67746171584986,
+      "sharpe_ratio": -1.6975861067163025,
+      "profit_factor": 0.5025407971582604,
+      "avg_win": 2.5099034912148537,
+      "avg_loss": -2.572886805797428,
+      "largest_win": 4.256393135306578,
+      "largest_loss": -2.9938117796426993,
+      "final_balance": 9957.763094759337
+    },
+    "out_sample": {
+      "params": {
+        "stop_loss_pct": 0.01,
+        "take_profit_pct": 0.02,
+        "position_size": 0.002,
+        "imbalance_threshold": 0.0005
+      },
+      "total_pnl": -11.195145381370667,
+      "num_trades": 28,
+      "win_rate": 0.4642857142857143,
+      "avg_profit_per_month": -13.815414543604989,
+      "volatility": 0.005468829742302936,
+      "max_drawdown": 19.101628888816776,
+      "sharpe_ratio": -0.9798714944118239,
+      "profit_factor": 0.7154617797257113,
+      "avg_win": 2.165370486722272,
+      "avg_loss": -2.6229974472506807,
+      "largest_win": 4.32084109420087,
+      "largest_loss": -3.070875342178117,
+      "final_balance": 9988.804854618627
+    },
+    "timestamp": "2025-08-17T16:19:47.328068"
+  },
+  {
+    "combination_id": 4,
+    "params": {
+      "stop_loss_pct": 0.01,
+      "take_profit_pct": 0.025,
+      "position_size": 0.001,
+      "imbalance_threshold": 0.0002
+    },
+    "in_sample": {
+      "params": {
+        "stop_loss_pct": 0.01,
+        "take_profit_pct": 0.025,
+        "position_size": 0.001,
+        "imbalance_threshold": 0.0002
+      },
+      "total_pnl": -17.713740980466095,
+      "num_trades": 50,
+      "win_rate": 0.34,
+      "avg_profit_per_month": -9.350397840093434,
+      "volatility": 0.0026835944460220696,
+      "max_drawdown": 22.030164760280968,
+      "sharpe_ratio": -1.3984905478982452,
+      "profit_factor": 0.5827410451936097,
+      "avg_win": 1.4552289008936161,
+      "avg_loss": -1.286443402898714,
+      "largest_win": 2.7361399518673877,
+      "largest_loss": -1.4969058898213496,
+      "final_balance": 9982.286259019535
+    },
+    "out_sample": {
+      "params": {
+        "stop_loss_pct": 0.01,
+        "take_profit_pct": 0.025,
+        "position_size": 0.001,
+        "imbalance_threshold": 0.0002
+      },
+      "total_pnl": -5.912401067386562,
+      "num_trades": 27,
+      "win_rate": 0.4444444444444444,
+      "avg_profit_per_month": -7.296222506401903,
+      "volatility": 0.0026801701396639128,
+      "max_drawdown": 8.757244369144246,
+      "sharpe_ratio": -1.059326762654426,
+      "profit_factor": 0.6994582884003591,
+      "avg_win": 1.146673315582795,
+      "avg_loss": -1.3114987236253404,
+      "largest_win": 2.777569074963259,
+      "largest_loss": -1.5354376710890585,
+      "final_balance": 9994.087598932616
+    },
+    "timestamp": "2025-08-17T16:19:47.468545"
+  },
+  {
+    "combination_id": 5,
+    "params": {
+      "stop_loss_pct": 0.01,
+      "take_profit_pct": 0.025,
+      "position_size": 0.001,
+      "imbalance_threshold": 0.0005
+    },
+    "in_sample": {
+      "params": {
+        "stop_loss_pct": 0.01,
+        "take_profit_pct": 0.025,
+        "position_size": 0.001,
+        "imbalance_threshold": 0.0005
+      },
+      "total_pnl": -17.713740980466095,
+      "num_trades": 50,
+      "win_rate": 0.34,
+      "avg_profit_per_month": -9.350397840093434,
+      "volatility": 0.0026835944460220696,
+      "max_drawdown": 22.030164760280968,
+      "sharpe_ratio": -1.3984905478982452,
+      "profit_factor": 0.5827410451936097,
+      "avg_win": 1.4552289008936161,
+      "avg_loss": -1.286443402898714,
+      "largest_win": 2.7361399518673877,
+      "largest_loss": -1.4969058898213496,
+      "final_balance": 9982.286259019535
+    },
+    "out_sample": {
+      "params": {
+        "stop_loss_pct": 0.01,
+        "take_profit_pct": 0.025,
+        "position_size": 0.001,
+        "imbalance_threshold": 0.0005
+      },
+      "total_pnl": -5.912401067386562,
+      "num_trades": 27,
+      "win_rate": 0.4444444444444444,
+      "avg_profit_per_month": -7.296222506401903,
+      "volatility": 0.0026801701396639128,
+      "max_drawdown": 8.757244369144246,
+      "sharpe_ratio": -1.059326762654426,
+      "profit_factor": 0.6994582884003591,
+      "avg_win": 1.146673315582795,
+      "avg_loss": -1.3114987236253404,
+      "largest_win": 2.777569074963259,
+      "largest_loss": -1.5354376710890585,
+      "final_balance": 9994.087598932616
+    },
+    "timestamp": "2025-08-17T16:19:47.609178"
+  },
+  {
+    "combination_id": 6,
+    "params": {
+      "stop_loss_pct": 0.01,
+      "take_profit_pct": 0.025,
+      "position_size": 0.002,
+      "imbalance_threshold": 0.0002
+    },
+    "in_sample": {
+      "params": {
+        "stop_loss_pct": 0.01,
+        "take_profit_pct": 0.025,
+        "position_size": 0.002,
+        "imbalance_threshold": 0.0002
+      },
+      "total_pnl": -35.42748196093219,
+      "num_trades": 50,
+      "win_rate": 0.34,
+      "avg_profit_per_month": -18.700795680186868,
+      "volatility": 0.005372760053617327,
+      "max_drawdown": 44.060329520565574,
+      "sharpe_ratio": -1.3978006379061643,
+      "profit_factor": 0.5827410451936097,
+      "avg_win": 2.9104578017872322,
+      "avg_loss": -2.572886805797428,
+      "largest_win": 5.472279903734775,
+      "largest_loss": -2.9938117796426993,
+      "final_balance": 9964.572518039067
+    },
+    "out_sample": {
+      "params": {
+        "stop_loss_pct": 0.01,
+        "take_profit_pct": 0.025,
+        "position_size": 0.002,
+        "imbalance_threshold": 0.0002
+      },
+      "total_pnl": -11.824802134773124,
+      "num_trades": 27,
+      "win_rate": 0.4444444444444444,
+      "avg_profit_per_month": -14.592445012803806,
+      "volatility": 0.005362455062034913,
+      "max_drawdown": 17.51448873829395,
+      "sharpe_ratio": -1.0587497030523865,
+      "profit_factor": 0.6994582884003591,
+      "avg_win": 2.29334663116559,
+      "avg_loss": -2.6229974472506807,
+      "largest_win": 5.555138149926518,
+      "largest_loss": -3.070875342178117,
+      "final_balance": 9988.175197865225
+    },
+    "timestamp": "2025-08-17T16:19:47.749646"
+  },
+  {
+    "combination_id": 7,
+    "params": {
+      "stop_loss_pct": 0.01,
+      "take_profit_pct": 0.025,
+      "position_size": 0.002,
+      "imbalance_threshold": 0.0005
+    },
+    "in_sample": {
+      "params": {
+        "stop_loss_pct": 0.01,
+        "take_profit_pct": 0.025,
+        "position_size": 0.002,
+        "imbalance_threshold": 0.0005
+      },
+      "total_pnl": -35.42748196093219,
+      "num_trades": 50,
+      "win_rate": 0.34,
+      "avg_profit_per_month": -18.700795680186868,
+      "volatility": 0.005372760053617327,
+      "max_drawdown": 44.060329520565574,
+      "sharpe_ratio": -1.3978006379061643,
+      "profit_factor": 0.5827410451936097,
+      "avg_win": 2.9104578017872322,
+      "avg_loss": -2.572886805797428,
+      "largest_win": 5.472279903734775,
+      "largest_loss": -2.9938117796426993,
+      "final_balance": 9964.572518039067
+    },
+    "out_sample": {
+      "params": {
+        "stop_loss_pct": 0.01,
+        "take_profit_pct": 0.025,
+        "position_size": 0.002,
+        "imbalance_threshold": 0.0005
+      },
+      "total_pnl": -11.824802134773124,
+      "num_trades": 27,
+      "win_rate": 0.4444444444444444,
+      "avg_profit_per_month": -14.592445012803806,
+      "volatility": 0.005362455062034913,
+      "max_drawdown": 17.51448873829395,
+      "sharpe_ratio": -1.0587497030523865,
+      "profit_factor": 0.6994582884003591,
+      "avg_win": 2.29334663116559,
+      "avg_loss": -2.6229974472506807,
+      "largest_win": 5.555138149926518,
+      "largest_loss": -3.070875342178117,
+      "final_balance": 9988.175197865225
+    },
+    "timestamp": "2025-08-17T16:19:47.890054"
+  },
+  {
+    "combination_id": 8,
+    "params": {
+      "stop_loss_pct": 0.01,
+      "take_profit_pct": 0.03,
+      "position_size": 0.001,
+      "imbalance_threshold": 0.0002
+    },
+    "in_sample": {
+      "params": {
+        "stop_loss_pct": 0.01,
+        "take_profit_pct": 0.03,
+        "position_size": 0.001,
+        "imbalance_threshold": 0.0002
+      },
+      "total_pnl": -17.118250934212305,
+      "num_trades": 50,
+      "win_rate": 0.34,
+      "avg_profit_per_month": -9.03606170700733,
+      "volatility": 0.0027794217106617033,
+      "max_drawdown": 22.627602282096632,
+      "sharpe_ratio": -1.3040291433931963,
+      "profit_factor": 0.5967682094482676,
+      "avg_win": 1.4902577271438384,
+      "avg_loss": -1.286443402898714,
+      "largest_win": 3.3440833360815154,
+      "largest_loss": -1.4969058898213496,
+      "final_balance": 9982.881749065788
+    },
+    "out_sample": {
+      "params": {
+        "stop_loss_pct": 0.01,
+        "take_profit_pct": 0.03,
+        "position_size": 0.001,
+        "imbalance_threshold": 0.0002
+      },
+      "total_pnl": -5.353607759090736,
+      "num_trades": 27,
+      "win_rate": 0.4444444444444444,
+      "avg_profit_per_month": -6.606641358921162,
+      "volatility": 0.002737283138743905,
+      "max_drawdown": 9.114975163489362,
+      "sharpe_ratio": -0.9339841883427719,
+      "profit_factor": 0.7278631099595786,
+      "avg_win": 1.1932394246074474,
+      "avg_loss": -1.3114987236253404,
+      "largest_win": 3.394717602826097,
+      "largest_loss": -1.5354376710890585,
+      "final_balance": 9994.646392240913
+    },
+    "timestamp": "2025-08-17T16:19:48.030247"
+  },
+  {
+    "combination_id": 9,
+    "params": {
+      "stop_loss_pct": 0.01,
+      "take_profit_pct": 0.03,
+      "position_size": 0.001,
+      "imbalance_threshold": 0.0005
+    },
+    "in_sample": {
+      "params": {
+        "stop_loss_pct": 0.01,
+        "take_profit_pct": 0.03,
+        "position_size": 0.001,
+        "imbalance_threshold": 0.0005
+      },
+      "total_pnl": -17.118250934212305,
+      "num_trades": 50,
+      "win_rate": 0.34,
+      "avg_profit_per_month": -9.03606170700733,
+      "volatility": 0.0027794217106617033,
+      "max_drawdown": 22.627602282096632,
+      "sharpe_ratio": -1.3040291433931963,
+      "profit_factor": 0.5967682094482676,
+      "avg_win": 1.4902577271438384,
+      "avg_loss": -1.286443402898714,
+      "largest_win": 3.3440833360815154,
+      "largest_loss": -1.4969058898213496,
+      "final_balance": 9982.881749065788
+    },
+    "out_sample": {
+      "params": {
+        "stop_loss_pct": 0.01,
+        "take_profit_pct": 0.03,
+        "position_size": 0.001,
+        "imbalance_threshold": 0.0005
+      },
+      "total_pnl": -5.353607759090736,
+      "num_trades": 27,
+      "win_rate": 0.4444444444444444,
+      "avg_profit_per_month": -6.606641358921162,
+      "volatility": 0.002737283138743905,
+      "max_drawdown": 9.114975163489362,
+      "sharpe_ratio": -0.9339841883427719,
+      "profit_factor": 0.7278631099595786,
+      "avg_win": 1.1932394246074474,
+      "avg_loss": -1.3114987236253404,
+      "largest_win": 3.394717602826097,
+      "largest_loss": -1.5354376710890585,
+      "final_balance": 9994.646392240913
+    },
+    "timestamp": "2025-08-17T16:19:48.170941"
+  },
+  {
+    "combination_id": 10,
+    "params": {
+      "stop_loss_pct": 0.01,
+      "take_profit_pct": 0.03,
+      "position_size": 0.002,
+      "imbalance_threshold": 0.0002
+    },
+    "in_sample": {
+      "params": {
+        "stop_loss_pct": 0.01,
+        "take_profit_pct": 0.03,
+        "position_size": 0.002,
+        "imbalance_threshold": 0.0002
+      },
+      "total_pnl": -34.23650186842461,
+      "num_trades": 50,
+      "win_rate": 0.34,
+      "avg_profit_per_month": -18.07212341401466,
+      "volatility": 0.005564766375474123,
+      "max_drawdown": 45.25520456419508,
+      "sharpe_ratio": -1.303263999402633,
+      "profit_factor": 0.5967682094482676,
+      "avg_win": 2.980515454287677,
+      "avg_loss": -2.572886805797428,
+      "largest_win": 6.688166672163031,
+      "largest_loss": -2.9938117796426993,
+      "final_balance": 9965.763498131575
+    },
+    "out_sample": {
+      "params": {
+        "stop_loss_pct": 0.01,
+        "take_profit_pct": 0.03,
+        "position_size": 0.002,
+        "imbalance_threshold": 0.0002
+      },
+      "total_pnl": -10.707215518181473,
+      "num_trades": 27,
+      "win_rate": 0.4444444444444444,
+      "avg_profit_per_month": -13.213282717842324,
+      "volatility": 0.005476580618001757,
+      "max_drawdown": 18.22995032698418,
+      "sharpe_ratio": -0.9334107626583122,
+      "profit_factor": 0.7278631099595786,
+      "avg_win": 2.3864788492148947,
+      "avg_loss": -2.6229974472506807,
+      "largest_win": 6.789435205652194,
+      "largest_loss": -3.070875342178117,
+      "final_balance": 9989.292784481817
+    },
+    "timestamp": "2025-08-17T16:19:48.312390"
+  },
+  {
+    "combination_id": 11,
+    "params": {
+      "stop_loss_pct": 0.01,
+      "take_profit_pct": 0.03,
+      "position_size": 0.002,
+      "imbalance_threshold": 0.0005
+    },
+    "in_sample": {
+      "params": {
+        "stop_loss_pct": 0.01,
+        "take_profit_pct": 0.03,
+        "position_size": 0.002,
+        "imbalance_threshold": 0.0005
+      },
+      "total_pnl": -34.23650186842461,
+      "num_trades": 50,
+      "win_rate": 0.34,
+      "avg_profit_per_month": -18.07212341401466,
+      "volatility": 0.005564766375474123,
+      "max_drawdown": 45.25520456419508,
+      "sharpe_ratio": -1.303263999402633,
+      "profit_factor": 0.5967682094482676,
+      "avg_win": 2.980515454287677,
+      "avg_loss": -2.572886805797428,
+      "largest_win": 6.688166672163031,
+      "largest_loss": -2.9938117796426993,
+      "final_balance": 9965.763498131575
+    },
+    "out_sample": {
+      "params": {
+        "stop_loss_pct": 0.01,
+        "take_profit_pct": 0.03,
+        "position_size": 0.002,
+        "imbalance_threshold": 0.0005
+      },
+      "total_pnl": -10.707215518181473,
+      "num_trades": 27,
+      "win_rate": 0.4444444444444444,
+      "avg_profit_per_month": -13.213282717842324,
+      "volatility": 0.005476580618001757,
+      "max_drawdown": 18.22995032698418,
+      "sharpe_ratio": -0.9334107626583122,
+      "profit_factor": 0.7278631099595786,
+      "avg_win": 2.3864788492148947,
+      "avg_loss": -2.6229974472506807,
+      "largest_win": 6.789435205652194,
+      "largest_loss": -3.070875342178117,
+      "final_balance": 9989.292784481817
+    },
+    "timestamp": "2025-08-17T16:19:48.452932"
+  },
+  {
+    "combination_id": 12,
+    "params": {
+      "stop_loss_pct": 0.015,
+      "take_profit_pct": 0.02,
+      "position_size": 0.001,
+      "imbalance_threshold": 0.0002
+    },
+    "in_sample": {
+      "params": {
+        "stop_loss_pct": 0.015,
+        "take_profit_pct": 0.02,
+        "position_size": 0.001,
+        "imbalance_threshold": 0.0002
+      },
+      "total_pnl": -23.92912151998883,
+      "num_trades": 46,
+      "win_rate": 0.41304347826086957,
+      "avg_profit_per_month": -12.631256515638036,
+      "volatility": 0.0030322881783211714,
+      "max_drawdown": 29.918719465538743,
+      "sharpe_ratio": -1.6798344786078354,
+      "profit_factor": 0.49964208889393874,
+      "avg_win": 1.2576256858778412,
+      "avg_loss": -1.7712596130247333,
+      "largest_win": 2.128196567653289,
+      "largest_loss": -2.095512434269691,
+      "final_balance": 9976.070878480015
+    },
+    "out_sample": {
+      "params": {
+        "stop_loss_pct": 0.015,
+        "take_profit_pct": 0.02,
+        "position_size": 0.001,
+        "imbalance_threshold": 0.0002
+      },
+      "total_pnl": -8.740832619776809,
+      "num_trades": 25,
+      "win_rate": 0.52,
+      "avg_profit_per_month": -10.786659930243488,
+      "volatility": 0.0029206939109118527,
+      "max_drawdown": 13.535359239322133,
+      "sharpe_ratio": -1.4617541276778883,
+      "profit_factor": 0.585074669361471,
+      "avg_win": 0.9480926914080356,
+      "avg_loss": -1.755503134006773,
+      "largest_win": 2.1505700337087874,
+      "largest_loss": -2.10405782965316,
+      "final_balance": 9991.259167380227
+    },
+    "timestamp": "2025-08-17T16:19:48.593231"
+  },
+  {
+    "combination_id": 13,
+    "params": {
+      "stop_loss_pct": 0.015,
+      "take_profit_pct": 0.02,
+      "position_size": 0.001,
+      "imbalance_threshold": 0.0005
+    },
+    "in_sample": {
+      "params": {
+        "stop_loss_pct": 0.015,
+        "take_profit_pct": 0.02,
+        "position_size": 0.001,
+        "imbalance_threshold": 0.0005
+      },
+      "total_pnl": -23.92912151998883,
+      "num_trades": 46,
+      "win_rate": 0.41304347826086957,
+      "avg_profit_per_month": -12.631256515638036,
+      "volatility": 0.0030322881783211714,
+      "max_drawdown": 29.918719465538743,
+      "sharpe_ratio": -1.6798344786078354,
+      "profit_factor": 0.49964208889393874,
+      "avg_win": 1.2576256858778412,
+      "avg_loss": -1.7712596130247333,
+      "largest_win": 2.128196567653289,
+      "largest_loss": -2.095512434269691,
+      "final_balance": 9976.070878480015
+    },
+    "out_sample": {
+      "params": {
+        "stop_loss_pct": 0.015,
+        "take_profit_pct": 0.02,
+        "position_size": 0.001,
+        "imbalance_threshold": 0.0005
+      },
+      "total_pnl": -8.740832619776809,
+      "num_trades": 25,
+      "win_rate": 0.52,
+      "avg_profit_per_month": -10.786659930243488,
+      "volatility": 0.0029206939109118527,
+      "max_drawdown": 13.535359239322133,
+      "sharpe_ratio": -1.4617541276778883,
+      "profit_factor": 0.585074669361471,
+      "avg_win": 0.9480926914080356,
+      "avg_loss": -1.755503134006773,
+      "largest_win": 2.1505700337087874,
+      "largest_loss": -2.10405782965316,
+      "final_balance": 9991.259167380227
+    },
+    "timestamp": "2025-08-17T16:19:48.738012"
+  },
+  {
+    "combination_id": 14,
+    "params": {
+      "stop_loss_pct": 0.015,
+      "take_profit_pct": 0.02,
+      "position_size": 0.002,
+      "imbalance_threshold": 0.0002
+    },
+    "in_sample": {
+      "params": {
+        "stop_loss_pct": 0.015,
+        "take_profit_pct": 0.02,
+        "position_size": 0.002,
+        "imbalance_threshold": 0.0002
+      },
+      "total_pnl": -47.85824303997766,
+      "num_trades": 46,
+      "win_rate": 0.41304347826086957,
+      "avg_profit_per_month": -25.26251303127607,
+      "volatility": 0.006072745663183704,
+      "max_drawdown": 59.8374389310884,
+      "sharpe_ratio": -1.6790426124655065,
+      "profit_factor": 0.49964208889393874,
+      "avg_win": 2.5152513717556824,
+      "avg_loss": -3.5425192260494667,
+      "largest_win": 4.256393135306578,
+      "largest_loss": -4.191024868539382,
+      "final_balance": 9952.14175696002
+    },
+    "out_sample": {
+      "params": {
+        "stop_loss_pct": 0.015,
+        "take_profit_pct": 0.02,
+        "position_size": 0.002,
+        "imbalance_threshold": 0.0002
+      },
+      "total_pnl": -17.481665239553617,
+      "num_trades": 25,
+      "win_rate": 0.52,
+      "avg_profit_per_month": -21.573319860486976,
+      "volatility": 0.005845165030966149,
+      "max_drawdown": 27.070718478649724,
+      "sharpe_ratio": -1.4609269223445502,
+      "profit_factor": 0.585074669361471,
+      "avg_win": 1.8961853828160713,
+      "avg_loss": -3.511006268013546,
+      "largest_win": 4.301140067417575,
+      "largest_loss": -4.20811565930632,
+      "final_balance": 9982.518334760447
+    },
+    "timestamp": "2025-08-17T16:19:48.879662"
+  },
+  {
+    "combination_id": 15,
+    "params": {
+      "stop_loss_pct": 0.015,
+      "take_profit_pct": 0.02,
+      "position_size": 0.002,
+      "imbalance_threshold": 0.0005
+    },
+    "in_sample": {
+      "params": {
+        "stop_loss_pct": 0.015,
+        "take_profit_pct": 0.02,
+        "position_size": 0.002,
+        "imbalance_threshold": 0.0005
+      },
+      "total_pnl": -47.85824303997766,
+      "num_trades": 46,
+      "win_rate": 0.41304347826086957,
+      "avg_profit_per_month": -25.26251303127607,
+      "volatility": 0.006072745663183704,
+      "max_drawdown": 59.8374389310884,
+      "sharpe_ratio": -1.6790426124655065,
+      "profit_factor": 0.49964208889393874,
+      "avg_win": 2.5152513717556824,
+      "avg_loss": -3.5425192260494667,
+      "largest_win": 4.256393135306578,
+      "largest_loss": -4.191024868539382,
+      "final_balance": 9952.14175696002
+    },
+    "out_sample": {
+      "params": {
+        "stop_loss_pct": 0.015,
+        "take_profit_pct": 0.02,
+        "position_size": 0.002,
+        "imbalance_threshold": 0.0005
+      },
+      "total_pnl": -17.481665239553617,
+      "num_trades": 25,
+      "win_rate": 0.52,
+      "avg_profit_per_month": -21.573319860486976,
+      "volatility": 0.005845165030966149,
+      "max_drawdown": 27.070718478649724,
+      "sharpe_ratio": -1.4609269223445502,
+      "profit_factor": 0.585074669361471,
+      "avg_win": 1.8961853828160713,
+      "avg_loss": -3.511006268013546,
+      "largest_win": 4.301140067417575,
+      "largest_loss": -4.20811565930632,
+      "final_balance": 9982.518334760447
+    },
+    "timestamp": "2025-08-17T16:19:49.021270"
+  },
+  {
+    "combination_id": 16,
+    "params": {
+      "stop_loss_pct": 0.015,
+      "take_profit_pct": 0.025,
+      "position_size": 0.001,
+      "imbalance_threshold": 0.0002
+    },
+    "in_sample": {
+      "params": {
+        "stop_loss_pct": 0.015,
+        "take_profit_pct": 0.025,
+        "position_size": 0.001,
+        "imbalance_threshold": 0.0002
+      },
+      "total_pnl": -24.092407672373923,
+      "num_trades": 46,
+      "win_rate": 0.391304347826087,
+      "avg_profit_per_month": -12.717448951683162,
+      "volatility": 0.003070721753647636,
+      "max_drawdown": 29.96118270191255,
+      "sharpe_ratio": -1.6702738019329886,
+      "profit_factor": 0.5143565905205398,
+      "avg_win": 1.4176026215837483,
+      "avg_loss": -1.7717591021743349,
+      "largest_win": 2.7361399518673877,
+      "largest_loss": -2.095512434269691,
+      "final_balance": 9975.90759232763
+    },
+    "out_sample": {
+      "params": {
+        "stop_loss_pct": 0.015,
+        "take_profit_pct": 0.025,
+        "position_size": 0.001,
+        "imbalance_threshold": 0.0002
+      },
+      "total_pnl": -6.925756760495893,
+      "num_trades": 25,
+      "win_rate": 0.52,
+      "avg_profit_per_month": -8.546758207682227,
+      "volatility": 0.0029761268477947428,
+      "max_drawdown": 12.942911281184934,
+      "sharpe_ratio": -1.1260669432558064,
+      "profit_factor": 0.6712359063747677,
+      "avg_win": 1.0877139113527214,
+      "avg_loss": -1.755503134006773,
+      "largest_win": 2.7649046511750925,
+      "largest_loss": -2.10405782965316,
+      "final_balance": 9993.074243239507
+    },
+    "timestamp": "2025-08-17T16:19:49.162755"
+  },
+  {
+    "combination_id": 17,
+    "params": {
+      "stop_loss_pct": 0.015,
+      "take_profit_pct": 0.025,
+      "position_size": 0.001,
+      "imbalance_threshold": 0.0005
+    },
+    "in_sample": {
+      "params": {
+        "stop_loss_pct": 0.015,
+        "take_profit_pct": 0.025,
+        "position_size": 0.001,
+        "imbalance_threshold": 0.0005
+      },
+      "total_pnl": -24.092407672373923,
+      "num_trades": 46,
+      "win_rate": 0.391304347826087,
+      "avg_profit_per_month": -12.717448951683162,
+      "volatility": 0.003070721753647636,
+      "max_drawdown": 29.96118270191255,
+      "sharpe_ratio": -1.6702738019329886,
+      "profit_factor": 0.5143565905205398,
+      "avg_win": 1.4176026215837483,
+      "avg_loss": -1.7717591021743349,
+      "largest_win": 2.7361399518673877,
+      "largest_loss": -2.095512434269691,
+      "final_balance": 9975.90759232763
+    },
+    "out_sample": {
+      "params": {
+        "stop_loss_pct": 0.015,
+        "take_profit_pct": 0.025,
+        "position_size": 0.001,
+        "imbalance_threshold": 0.0005
+      },
+      "total_pnl": -6.925756760495893,
+      "num_trades": 25,
+      "win_rate": 0.52,
+      "avg_profit_per_month": -8.546758207682227,
+      "volatility": 0.0029761268477947428,
+      "max_drawdown": 12.942911281184934,
+      "sharpe_ratio": -1.1260669432558064,
+      "profit_factor": 0.6712359063747677,
+      "avg_win": 1.0877139113527214,
+      "avg_loss": -1.755503134006773,
+      "largest_win": 2.7649046511750925,
+      "largest_loss": -2.10405782965316,
+      "final_balance": 9993.074243239507
+    },
+    "timestamp": "2025-08-17T16:19:49.305170"
+  },
+  {
+    "combination_id": 18,
+    "params": {
+      "stop_loss_pct": 0.015,
+      "take_profit_pct": 0.025,
+      "position_size": 0.002,
+      "imbalance_threshold": 0.0002
+    },
+    "in_sample": {
+      "params": {
+        "stop_loss_pct": 0.015,
+        "take_profit_pct": 0.025,
+        "position_size": 0.002,
+        "imbalance_threshold": 0.0002
+      },
+      "total_pnl": -48.18481534474785,
+      "num_trades": 46,
+      "win_rate": 0.391304347826087,
+      "avg_profit_per_month": -25.434897903366323,
+      "volatility": 0.006150048466230446,
+      "max_drawdown": 59.92236540383601,
+      "sharpe_ratio": -1.6694003890846947,
+      "profit_factor": 0.5143565905205398,
+      "avg_win": 2.8352052431674966,
+      "avg_loss": -3.5435182043486697,
+      "largest_win": 5.472279903734775,
+      "largest_loss": -4.191024868539382,
+      "final_balance": 9951.81518465525
+    },
+    "out_sample": {
+      "params": {
+        "stop_loss_pct": 0.015,
+        "take_profit_pct": 0.025,
+        "position_size": 0.002,
+        "imbalance_threshold": 0.0002
+      },
+      "total_pnl": -13.851513520991785,
+      "num_trades": 25,
+      "win_rate": 0.52,
+      "avg_profit_per_month": -17.093516415364455,
+      "volatility": 0.005955779377110548,
+      "max_drawdown": 25.885822562373505,
+      "sharpe_ratio": -1.1252658098368962,
+      "profit_factor": 0.6712359063747677,
+      "avg_win": 2.175427822705443,
+      "avg_loss": -3.511006268013546,
+      "largest_win": 5.529809302350185,
+      "largest_loss": -4.20811565930632,
+      "final_balance": 9986.148486479009
+    },
+    "timestamp": "2025-08-17T16:19:49.445804"
+  },
+  {
+    "combination_id": 19,
+    "params": {
+      "stop_loss_pct": 0.015,
+      "take_profit_pct": 0.025,
+      "position_size": 0.002,
+      "imbalance_threshold": 0.0005
+    },
+    "in_sample": {
+      "params": {
+        "stop_loss_pct": 0.015,
+        "take_profit_pct": 0.025,
+        "position_size": 0.002,
+        "imbalance_threshold": 0.0005
+      },
+      "total_pnl": -48.18481534474785,
+      "num_trades": 46,
+      "win_rate": 0.391304347826087,
+      "avg_profit_per_month": -25.434897903366323,
+      "volatility": 0.006150048466230446,
+      "max_drawdown": 59.92236540383601,
+      "sharpe_ratio": -1.6694003890846947,
+      "profit_factor": 0.5143565905205398,
+      "avg_win": 2.8352052431674966,
+      "avg_loss": -3.5435182043486697,
+      "largest_win": 5.472279903734775,
+      "largest_loss": -4.191024868539382,
+      "final_balance": 9951.81518465525
+    },
+    "out_sample": {
+      "params": {
+        "stop_loss_pct": 0.015,
+        "take_profit_pct": 0.025,
+        "position_size": 0.002,
+        "imbalance_threshold": 0.0005
+      },
+      "total_pnl": -13.851513520991785,
+      "num_trades": 25,
+      "win_rate": 0.52,
+      "avg_profit_per_month": -17.093516415364455,
+      "volatility": 0.005955779377110548,
+      "max_drawdown": 25.885822562373505,
+      "sharpe_ratio": -1.1252658098368962,
+      "profit_factor": 0.6712359063747677,
+      "avg_win": 2.175427822705443,
+      "avg_loss": -3.511006268013546,
+      "largest_win": 5.529809302350185,
+      "largest_loss": -4.20811565930632,
+      "final_balance": 9986.148486479009
+    },
+    "timestamp": "2025-08-17T16:19:49.586367"
+  }
+]
