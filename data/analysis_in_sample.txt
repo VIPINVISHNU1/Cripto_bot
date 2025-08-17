@@ -1,0 +1,32 @@
+
+Performance Report - SwingEMA Strategy (in_sample)
+==================================================
+
+SUMMARY:
+  Total Trades: 1
+  Winning Trades: 1 (100.0%)
+  Losing Trades: 0
+  
+  Total P&L: $267.29
+  Total Fees: $20.01
+  Net P&L: $267.29
+  Return: 2.67%
+  Final Balance: $10,267.29
+
+TRADE METRICS:
+  Average Win: $267.29
+  Average Loss: $0.00
+  Largest Win: $267.29
+  Largest Loss: $267.29
+  Profit Factor: inf
+  Average Hold Time: 2 days 00:00:00
+
+RISK METRICS:
+  Max Drawdown: 0.0%
+  Sharpe Ratio: 0
+  Avg Position Size: 0.0953
+  Position Size Range: 0.0953 - 0.0953
+
+TRADE DISTRIBUTION:
+  Exit Reasons: {'TrailingStop': 1}
+  Signal Types: {'short': 1}

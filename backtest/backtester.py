@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import os
+from utils.performance_analyzer import PerformanceAnalyzer
 
 class Backtester:
     def __init__(self, config, strategy, logger):
@@ -23,6 +24,9 @@ class Backtester:
         # Stop loss and take profit settings
         self.stop_loss_pct = float(config.get("stop_loss_pct", 0.01))  # 1% default
         self.take_profit_pct = float(config.get("take_profit_pct", 0.02))  # 2% default
+
+        # Initialize performance analyzer
+        self.performance_analyzer = PerformanceAnalyzer(logger)
 
         os.makedirs("data", exist_ok=True)
 
@@ -304,6 +308,14 @@ class Backtester:
             self.logger.info("No trades executed.")
             return
 
+        # Use performance analyzer for comprehensive analysis
+        analysis = self.performance_analyzer.analyze_trades(trades, self.initial_balance)
+        
+        # Generate and log detailed report
+        report = self.performance_analyzer.generate_report(analysis, f"SwingEMA Strategy ({tag})")
+        self.logger.info(f"\n{report}")
+        
+        # Basic logging for backward compatibility
         pnl = [t["pnl"] for t in trades]
         total = sum(pnl)
         win = len([p for p in pnl if p > 0])
@@ -314,20 +326,45 @@ class Backtester:
         self.logger.info(f"Total P&L: {total:.2f}, Trades: {len(trades)}, Win Rate: {win_rate:.2%}")
         self.logger.info(f"Max Drawdown: {max_dd:.2f}, Sharpe Ratio: {sharpe:.2f}")
 
-        # Plot equity curve and drawdown
-        plt.figure(figsize=(12,6))
-        plt.subplot(2,1,1)
-        plt.plot(dates, eq_curve, label="Equity Curve")
-        plt.title(f"Equity Curve ({tag})")
-        plt.legend()
-        plt.subplot(2,1,2)
-        drawdown = self.drawdown_series(eq_curve)
-        plt.plot(dates, drawdown, color='red', label="Drawdown")
-        plt.title("Drawdown")
-        plt.legend()
-        plt.tight_layout()
-        plt.savefig(f"data/equity_curve_{tag}.png")
-        plt.close()
+        # Generate plots using performance analyzer
+        if "equity_curve" in analysis:
+            self.performance_analyzer.plot_equity_curve(
+                analysis["equity_curve"], 
+                f"Equity Curve ({tag})", 
+                f"data/equity_curve_{tag}.png"
+            )
+        
+        if "drawdown_series" in analysis:
+            self.performance_analyzer.plot_drawdown(
+                analysis["drawdown_series"], 
+                f"Drawdown ({tag})", 
+                f"data/drawdown_{tag}.png"
+            )
+
+        # Save detailed analysis to file
+        if "summary" in analysis:
+            analysis_file = f"data/analysis_{tag}.txt"
+            with open(analysis_file, 'w') as f:
+                f.write(report)
+            self.logger.info(f"Detailed analysis saved to {analysis_file}")
+
+        # Legacy plot for compatibility
+        try:
+            plt.figure(figsize=(12,6))
+            plt.subplot(2,1,1)
+            plt.plot(dates, eq_curve, label="Equity Curve")
+            plt.title(f"Equity Curve ({tag})")
+            plt.legend()
+            plt.subplot(2,1,2)
+            drawdown = self.drawdown_series(eq_curve)
+            plt.plot(dates, drawdown, color='red', label="Drawdown")
+            plt.title("Drawdown")
+            plt.legend()
+            plt.tight_layout()
+            plt.savefig(f"data/legacy_equity_curve_{tag}.png")
+            plt.close()
+        except Exception as e:
+            self.logger.error(f"Error creating legacy plots: {e}")
 
     @staticmethod
     def max_drawdown(equity):

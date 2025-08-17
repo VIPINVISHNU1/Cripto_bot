@@ -311,17 +311,297 @@ class SwingEMARsiVolumeStrategy:
         return {"cv_results": cv_results}
     
     def run_live(self):
-        """Placeholder for live trading logic."""
+        """
+        Live trading implementation with real-time data processing and order execution.
+        This is a comprehensive placeholder that outlines the complete live trading workflow.
+        """
         self.logger.info("Starting live trading mode for SwingEMARsiVolumeStrategy")
-        self.logger.info("Live trading implementation needed:")
-        self.logger.info("- Real-time data fetching")
-        self.logger.info("- Order execution logic")
-        self.logger.info("- Position management")
-        self.logger.info("- Risk monitoring")
         
-        # TODO: Implement live trading logic
-        # - Connect to real-time data feed
-        # - Monitor for signals
-        # - Execute orders through broker
-        # - Manage positions and risk
+        try:
+            # Initialize live trading components
+            self._initialize_live_trading()
+            
+            # Main trading loop
+            self._run_live_trading_loop()
+            
+        except Exception as e:
+            self.logger.error(f"Live trading error: {e}")
+            self._handle_live_trading_error(e)
+        finally:
+            self._cleanup_live_trading()
+    
+    def _initialize_live_trading(self):
+        """Initialize live trading components and connections."""
+        self.logger.info("Initializing live trading components...")
+        
+        # Live trading state
+        self.live_position = None
+        self.live_entry_price = 0
+        self.live_stop_price = 0
+        self.live_tp_price = 0
+        self.live_position_size = 0
+        self.live_trailing_stop = None
+        
+        # Data buffer for indicators (keep last N bars)
+        self.data_buffer_size = max(self.ema_slow, self.rsi_period, self.atr_period) + 10
+        self.live_data_buffer = []
+        
+        # Performance tracking
+        self.live_trades_count = 0
+        self.live_pnl = 0.0
+        self.live_start_balance = 0.0
+        
+        self.logger.info("✓ Live trading state initialized")
+        
+        # TODO: Implement these initialization steps:
+        self.logger.info("Required implementations:")
+        self.logger.info("- Connect to broker API for real-time data")
+        self.logger.info("- Verify account balance and permissions")
+        self.logger.info("- Set up real-time data feed subscription")
+        self.logger.info("- Initialize position management system")
+        self.logger.info("- Set up emergency stop mechanisms")
+        
+    def _run_live_trading_loop(self):
+        """Main live trading loop."""
+        self.logger.info("Starting live trading loop...")
+        
+        while True:  # In real implementation, add proper exit conditions
+            try:
+                # 1. Fetch latest market data
+                latest_data = self._fetch_live_market_data()
+                if latest_data is None:
+                    self._wait_for_next_update()
+                    continue
+                
+                # 2. Update data buffer
+                self._update_data_buffer(latest_data)
+                
+                # 3. Check if we have enough data for analysis
+                if len(self.live_data_buffer) < self.data_buffer_size:
+                    self.logger.debug(f"Waiting for more data: {len(self.live_data_buffer)}/{self.data_buffer_size}")
+                    self._wait_for_next_update()
+                    continue
+                
+                # 4. Create DataFrame for indicator calculation
+                df = pd.DataFrame(self.live_data_buffer)
+                df = self.calculate_indicators(df)
+                current_bar = df.iloc[-1]
+                
+                # 5. Manage existing position
+                if self.live_position:
+                    self._manage_live_position(current_bar)
+                
+                # 6. Check for new signals (only if no position or reverse signal)
+                if not self.live_position:
+                    self._check_for_live_signals(df, current_bar)
+                
+                # 7. Update risk management
+                self._update_live_risk_management()
+                
+                # 8. Log status
+                self._log_live_status(current_bar)
+                
+                # 9. Wait for next update
+                self._wait_for_next_update()
+                
+            except KeyboardInterrupt:
+                self.logger.info("Live trading interrupted by user")
+                break
+            except Exception as e:
+                self.logger.error(f"Error in live trading loop: {e}")
+                self._handle_live_trading_error(e)
+    
+    def _fetch_live_market_data(self):
+        """Fetch latest market data from broker."""
+        # TODO: Implement real-time data fetching
+        self.logger.debug("Fetching live market data...")
+        
+        # Placeholder implementation
+        self.logger.debug("TODO: Implement broker.get_latest_kline() or similar")
+        return None
+    
+    def _update_data_buffer(self, new_data):
+        """Update the rolling data buffer with new market data."""
+        self.live_data_buffer.append(new_data)
+        
+        # Keep only the required number of bars
+        if len(self.live_data_buffer) > self.data_buffer_size:
+            self.live_data_buffer.pop(0)
+    
+    def _manage_live_position(self, current_bar):
+        """Manage existing live position - check stops, trailing stops, etc."""
+        self.logger.debug(f"Managing live position: {self.live_position}")
+        
+        current_price = current_bar['close']
+        
+        # Update trailing stop
+        if self.live_trailing_stop and 'atr' in current_bar:
+            new_trailing = self.update_trailing_stop(
+                current_price, self.live_entry_price, 
+                self.live_trailing_stop, current_bar['atr'], 
+                self.live_position
+            )
+            if new_trailing != self.live_trailing_stop:
+                self.logger.info(f"Trailing stop updated: {self.live_trailing_stop:.2f} -> {new_trailing:.2f}")
+                self.live_trailing_stop = new_trailing
+        
+        # Check exit conditions
+        exit_reason = None
+        exit_price = current_price
+        
+        if self.live_position == "long":
+            if current_price <= self.live_stop_price:
+                exit_reason = "StopLoss"
+                exit_price = self.live_stop_price
+            elif current_price >= self.live_tp_price:
+                exit_reason = "TakeProfit"  
+                exit_price = self.live_tp_price
+            elif self.live_trailing_stop and current_price <= self.live_trailing_stop:
+                exit_reason = "TrailingStop"
+                exit_price = self.live_trailing_stop
+        
+        elif self.live_position == "short":
+            if current_price >= self.live_stop_price:
+                exit_reason = "StopLoss"
+                exit_price = self.live_stop_price
+            elif current_price <= self.live_tp_price:
+                exit_reason = "TakeProfit"
+                exit_price = self.live_tp_price
+            elif self.live_trailing_stop and current_price >= self.live_trailing_stop:
+                exit_reason = "TrailingStop"
+                exit_price = self.live_trailing_stop
+        
+        if exit_reason:
+            self._execute_live_exit(exit_reason, exit_price)
+    
+    def _check_for_live_signals(self, df, current_bar):
+        """Check for new trading signals."""
+        # Generate signals for the current data
+        signals = self.generate_signals(df)
+        
+        # Check if there's a signal for the current bar
+        current_time = df.index[-1]
+        current_signals = [s for s in signals if s['time'] == current_time]
+        
+        for signal in current_signals:
+            self.logger.info(f"Live signal detected: {signal['type']} at {signal['price']:.2f}")
+            self._execute_live_entry(signal)
+            break  # Only take first signal
+    
+    def _execute_live_entry(self, signal):
+        """Execute live market entry order."""
+        self.logger.info(f"Executing live entry: {signal}")
+        
+        # TODO: Implement real order execution
+        # order = self.broker.place_market_order(
+        #     symbol=self.symbol,
+        #     side=signal['type'],
+        #     quantity=calculated_position_size
+        # )
+        
+        # Placeholder: simulate order execution
+        self.live_position = signal['type']
+        self.live_entry_price = signal['price']
+        self.live_stop_price = signal.get('stop_loss', 0)
+        self.live_tp_price = signal.get('take_profit', 0)
+        
+        # Calculate position size
+        if 'atr' in signal:
+            self.live_position_size = self.calculate_position_size(
+                self.live_start_balance, self.live_entry_price, 
+                self.live_stop_price, signal['atr']
+            )
+        else:
+            self.live_position_size = self.position_size
+        
+        # Initialize trailing stop
+        if 'atr' in signal:
+            if self.live_position == "long":
+                self.live_trailing_stop = self.live_entry_price - (signal['atr'] * self.trailing_stop_atr_mult)
+            else:
+                self.live_trailing_stop = self.live_entry_price + (signal['atr'] * self.trailing_stop_atr_mult)
+        
+        self.logger.info(f"Position opened: {self.live_position} {self.live_position_size:.4f} at {self.live_entry_price:.2f}")
+        self.logger.info(f"Stop: {self.live_stop_price:.2f}, TP: {self.live_tp_price:.2f}")
+    
+    def _execute_live_exit(self, exit_reason, exit_price):
+        """Execute live market exit order."""
+        self.logger.info(f"Executing live exit: {exit_reason} at {exit_price:.2f}")
+        
+        # TODO: Implement real order execution
+        # order = self.broker.place_market_order(
+        #     symbol=self.symbol,
+        #     side="sell" if self.live_position == "long" else "buy",
+        #     quantity=self.live_position_size
+        # )
+        
+        # Calculate P&L
+        if self.live_position == "long":
+            pnl = (exit_price - self.live_entry_price) * self.live_position_size
+        else:
+            pnl = (self.live_entry_price - exit_price) * self.live_position_size
+        
+        self.live_pnl += pnl
+        self.live_trades_count += 1
+        
+        self.logger.info(f"Position closed: {self.live_position} {self.live_position_size:.4f}")
+        self.logger.info(f"P&L: {pnl:.2f}, Total P&L: {self.live_pnl:.2f}, Trade #{self.live_trades_count}")
+        
+        # Reset position
+        self.live_position = None
+        self.live_entry_price = 0
+        self.live_stop_price = 0
+        self.live_tp_price = 0
+        self.live_position_size = 0
+        self.live_trailing_stop = None
+    
+    def _update_live_risk_management(self):
+        """Update risk management in live trading."""
+        # TODO: Implement live risk checks
+        # - Check daily loss limits
+        # - Check maximum position exposure
+        # - Check account balance
+        # - Monitor connection status
         pass
+    
+    def _log_live_status(self, current_bar):
+        """Log current trading status."""
+        if self.live_trades_count % 10 == 0:  # Log every 10th update
+            status = f"Live Status - Price: {current_bar['close']:.2f}"
+            if self.live_position:
+                status += f", Position: {self.live_position} {self.live_position_size:.4f}"
+                unrealized_pnl = 0
+                if self.live_position == "long":
+                    unrealized_pnl = (current_bar['close'] - self.live_entry_price) * self.live_position_size
+                else:
+                    unrealized_pnl = (self.live_entry_price - current_bar['close']) * self.live_position_size
+                status += f", Unrealized P&L: {unrealized_pnl:.2f}"
+            status += f", Total P&L: {self.live_pnl:.2f}, Trades: {self.live_trades_count}"
+            self.logger.info(status)
+    
+    def _wait_for_next_update(self):
+        """Wait for the next data update."""
+        import time
+        time.sleep(5)  # Wait 5 seconds (adjust based on timeframe)
+    
+    def _handle_live_trading_error(self, error):
+        """Handle errors in live trading."""
+        self.logger.error(f"Live trading error: {error}")
+        
+        # TODO: Implement error handling:
+        # - Close positions if critical error
+        # - Reconnect to data feed
+        # - Alert user/admin
+        # - Switch to safe mode
+        
+    def _cleanup_live_trading(self):
+        """Cleanup live trading resources."""
+        self.logger.info("Cleaning up live trading resources...")
+        
+        # TODO: Implement cleanup:
+        # - Close open positions (if desired)
+        # - Disconnect from data feeds
+        # - Save trading session data
+        # - Generate final report
+        
+        self.logger.info("Live trading cleanup completed")

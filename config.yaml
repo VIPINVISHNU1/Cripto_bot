@@ -58,8 +58,8 @@ strategy:
   cv_folds: 5
 
 backtest:
-  start: "2025-06-01"
-  end: "2025-08-15"
+  start: "2025-05-25"
+  end: "2025-08-16"
 
 risk:
   max_daily_loss: 100
