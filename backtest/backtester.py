@@ -59,7 +59,10 @@ class Backtester:
         entry_time = None
         stop_price = None
         tp_price = None
+        trailing_stop = None
+        position_size = 0  # Dynamic position size
         min_size = self.min_order_size
+        signal_data = None  # Store signal data for dynamic features
 
         for idx in range(1, len(data)):
             bar = data.iloc[idx]
@@ -68,15 +71,29 @@ class Backtester:
             bar_high = bar["high"]
             bar_low = bar["low"]
 
-            # Manage open position: check stop loss / take profit
+            # Update trailing stop if position is open
+            if position is not None and trailing_stop is not None and signal_data:
+                if hasattr(self.strategy, 'update_trailing_stop'):
+                    # Calculate current ATR for trailing stop
+                    current_atr = signal_data.get('atr', 0)
+                    new_trailing_stop = self.strategy.update_trailing_stop(
+                        bar["close"], entry_price, trailing_stop, current_atr, position
+                    )
+                    trailing_stop = new_trailing_stop
+
+            # Manage open position: check stop loss / take profit / trailing stop
             if position is not None:
-                # Check SL/TP first
+                # Check SL/TP/Trailing Stop first
                 exit_reason = None
                 exit_price = None
                 # For long
                 if position == "long":
+                    # Check trailing stop first (more aggressive)
+                    if trailing_stop and bar_low <= trailing_stop:
+                        exit_price = trailing_stop * (1 - self.slippage_rate)
+                        exit_reason = "TrailingStop"
                     # Check stop loss
-                    if bar_low <= stop_price:
+                    elif bar_low <= stop_price:
                         exit_price = stop_price * (1 - self.slippage_rate)
                         exit_reason = "StopLoss"
                     # Check take profit
@@ -85,8 +102,12 @@ class Backtester:
                         exit_reason = "TakeProfit"
                 # For short
                 elif position == "short":
+                    # Check trailing stop first (more aggressive)
+                    if trailing_stop and bar_high >= trailing_stop:
+                        exit_price = trailing_stop * (1 + self.slippage_rate)
+                        exit_reason = "TrailingStop"
                     # Check stop loss
-                    if bar_high >= stop_price:
+                    elif bar_high >= stop_price:
                         exit_price = stop_price * (1 + self.slippage_rate)
                         exit_reason = "StopLoss"
                     # Check take profit
@@ -95,81 +116,146 @@ class Backtester:
                         exit_reason = "TakeProfit"
 
                 if exit_reason is not None:
-                    size = max(np.floor(self.position_size / min_size) * min_size, min_size)
                     if position == "long":
-                        pnl = (exit_price - entry_price) * size
-                        fees = (entry_price + exit_price) * size * self.fee_rate
+                        pnl = (exit_price - entry_price) * position_size
+                        fees = (entry_price + exit_price) * position_size * self.fee_rate
                     else:
-                        pnl = (entry_price - exit_price) * size
-                        fees = (entry_price + exit_price) * size * self.fee_rate
+                        pnl = (entry_price - exit_price) * position_size
+                        fees = (entry_price + exit_price) * position_size * self.fee_rate
                     net_pnl = pnl - fees
                     cash += net_pnl
                     trades.append({
                         "entry_time": entry_time, "exit_time": bar_time,
                         "entry_price": entry_price, "exit_price": exit_price,
-                        "side": position, "size": size, "pnl": net_pnl, "fees": fees,
-                        "exit_reason": exit_reason
+                        "side": position, "size": position_size, "pnl": net_pnl, "fees": fees,
+                        "exit_reason": exit_reason, "signal_data": signal_data
                     })
                     position = None
                     entry_price = None
                     entry_time = None
                     stop_price = None
                     tp_price = None
+                    trailing_stop = None
+                    position_size = 0
+                    signal_data = None
 
             # Only use signals generated at previous bar close (no peeking)
             for sig in [s for s in signals if s["time"] == data.index[idx-1]]:
                 if position is None:
-                    size = max(np.floor(self.position_size / min_size) * min_size, min_size)
+                    # Calculate dynamic position size if strategy supports it
+                    if hasattr(self.strategy, 'calculate_position_size') and 'atr' in sig:
+                        entry_price_est = prev_bar["close"]
+                        stop_loss_est = sig.get('stop_loss', entry_price_est * (1 - self.stop_loss_pct))
+                        position_size = self.strategy.calculate_position_size(
+                            cash, entry_price_est, stop_loss_est, sig['atr']
+                        )
+                        position_size = max(position_size, min_size)
+                    else:
+                        position_size = max(np.floor(self.position_size / min_size) * min_size, min_size)
+                    
+                    signal_data = sig.copy()  # Store signal data
+                    
                     if sig["type"] == "long":
                         entry_price = prev_bar["close"] * (1 + self.slippage_rate)
                         entry_time = bar_time
                         position = "long"
-                        stop_price = entry_price * (1 - self.stop_loss_pct)
-                        tp_price = entry_price * (1 + self.take_profit_pct)
+                        
+                        # Use dynamic stops if available
+                        if 'stop_loss' in sig and 'take_profit' in sig:
+                            stop_price = sig['stop_loss']
+                            tp_price = sig['take_profit']
+                        else:
+                            stop_price = entry_price * (1 - self.stop_loss_pct)
+                            tp_price = entry_price * (1 + self.take_profit_pct)
+                        
+                        # Initialize trailing stop
+                        if hasattr(self.strategy, 'trailing_stop_atr_mult') and 'atr' in sig:
+                            trailing_stop = entry_price - (sig['atr'] * self.strategy.trailing_stop_atr_mult)
+                        
                     elif sig["type"] == "short":
                         entry_price = prev_bar["close"] * (1 - self.slippage_rate)
                         entry_time = bar_time
                         position = "short"
-                        stop_price = entry_price * (1 + self.stop_loss_pct)
-                        tp_price = entry_price * (1 - self.take_profit_pct)
+                        
+                        # Use dynamic stops if available
+                        if 'stop_loss' in sig and 'take_profit' in sig:
+                            stop_price = sig['stop_loss']
+                            tp_price = sig['take_profit']
+                        else:
+                            stop_price = entry_price * (1 + self.stop_loss_pct)
+                            tp_price = entry_price * (1 - self.take_profit_pct)
+                        
+                        # Initialize trailing stop
+                        if hasattr(self.strategy, 'trailing_stop_atr_mult') and 'atr' in sig:
+                            trailing_stop = entry_price + (sig['atr'] * self.strategy.trailing_stop_atr_mult)
+                            
                 # If already in position, consider exit on opposite signal (market exit)
                 elif (position == "long" and sig["type"] == "short") or (position == "short" and sig["type"] == "long"):
-                    size = max(np.floor(self.position_size / min_size) * min_size, min_size)
                     exit_price = prev_bar["close"] * (1 - self.slippage_rate if position=="long" else 1 + self.slippage_rate)
                     if position == "long":
-                        pnl = (exit_price - entry_price) * size
-                        fees = (entry_price + exit_price) * size * self.fee_rate
+                        pnl = (exit_price - entry_price) * position_size
+                        fees = (entry_price + exit_price) * position_size * self.fee_rate
                     else:
-                        pnl = (entry_price - exit_price) * size
-                        fees = (entry_price + exit_price) * size * self.fee_rate
+                        pnl = (entry_price - exit_price) * position_size
+                        fees = (entry_price + exit_price) * position_size * self.fee_rate
                     net_pnl = pnl - fees
                     cash += net_pnl
                     trades.append({
                         "entry_time": entry_time, "exit_time": bar_time,
                         "entry_price": entry_price, "exit_price": exit_price,
-                        "side": position, "size": size, "pnl": net_pnl, "fees": fees,
-                        "exit_reason": "SignalReverse"
+                        "side": position, "size": position_size, "pnl": net_pnl, "fees": fees,
+                        "exit_reason": "SignalReverse", "signal_data": signal_data
                     })
-                    # Now reverse
+                    
+                    # Now reverse position with new signal
+                    signal_data = sig.copy()
+                    
+                    # Calculate new dynamic position size
+                    if hasattr(self.strategy, 'calculate_position_size') and 'atr' in sig:
+                        entry_price_est = prev_bar["close"]
+                        stop_loss_est = sig.get('stop_loss', entry_price_est * (1 - self.stop_loss_pct))
+                        position_size = self.strategy.calculate_position_size(
+                            cash, entry_price_est, stop_loss_est, sig['atr']
+                        )
+                        position_size = max(position_size, min_size)
+                    else:
+                        position_size = max(np.floor(self.position_size / min_size) * min_size, min_size)
+                    
                     if sig["type"] == "long":
                         entry_price = prev_bar["close"] * (1 + self.slippage_rate)
                         entry_time = bar_time
                         position = "long"
-                        stop_price = entry_price * (1 - self.stop_loss_pct)
-                        tp_price = entry_price * (1 + self.take_profit_pct)
+                        
+                        if 'stop_loss' in sig and 'take_profit' in sig:
+                            stop_price = sig['stop_loss']
+                            tp_price = sig['take_profit']
+                        else:
+                            stop_price = entry_price * (1 - self.stop_loss_pct)
+                            tp_price = entry_price * (1 + self.take_profit_pct)
+                        
+                        if hasattr(self.strategy, 'trailing_stop_atr_mult') and 'atr' in sig:
+                            trailing_stop = entry_price - (sig['atr'] * self.strategy.trailing_stop_atr_mult)
+                            
                     elif sig["type"] == "short":
                         entry_price = prev_bar["close"] * (1 - self.slippage_rate)
                         entry_time = bar_time
                         position = "short"
-                        stop_price = entry_price * (1 + self.stop_loss_pct)
-                        tp_price = entry_price * (1 - self.take_profit_pct)
+                        
+                        if 'stop_loss' in sig and 'take_profit' in sig:
+                            stop_price = sig['stop_loss']
+                            tp_price = sig['take_profit']
+                        else:
+                            stop_price = entry_price * (1 + self.stop_loss_pct)
+                            tp_price = entry_price * (1 - self.take_profit_pct)
+                        
+                        if hasattr(self.strategy, 'trailing_stop_atr_mult') and 'atr' in sig:
+                            trailing_stop = entry_price + (sig['atr'] * self.strategy.trailing_stop_atr_mult)
 
             # Update equity curve
-            size = max(np.floor(self.position_size / min_size) * min_size, min_size)
             if position == "long":
-                eq = cash + (bar["close"] - entry_price) * size
+                eq = cash + (bar["close"] - entry_price) * position_size
             elif position == "short":
-                eq = cash + (entry_price - bar["close"]) * size
+                eq = cash + (entry_price - bar["close"]) * position_size
             else:
                 eq = cash
             equity_curve.append(eq)
@@ -178,20 +264,19 @@ class Backtester:
         if position is not None:
             final_bar = data.iloc[-1]
             final_price = final_bar["close"] * (1 - self.slippage_rate if position=="long" else 1 + self.slippage_rate)
-            size = max(np.floor(self.position_size / min_size) * min_size, min_size)
             if position == "long":
-                pnl = (final_price - entry_price) * size
-                fees = (entry_price + final_price) * size * self.fee_rate
+                pnl = (final_price - entry_price) * position_size
+                fees = (entry_price + final_price) * position_size * self.fee_rate
             else:
-                pnl = (entry_price - final_price) * size
-                fees = (entry_price + final_price) * size * self.fee_rate
+                pnl = (entry_price - final_price) * position_size
+                fees = (entry_price + final_price) * position_size * self.fee_rate
             net_pnl = pnl - fees
             cash += net_pnl
             trades.append({
                 "entry_time": entry_time, "exit_time": data.index[-1],
                 "entry_price": entry_price, "exit_price": final_price,
-                "side": position, "size": size, "pnl": net_pnl, "fees": fees,
-                "exit_reason": "EndOfTest"
+                "side": position, "size": position_size, "pnl": net_pnl, "fees": fees,
+                "exit_reason": "EndOfTest", "signal_data": signal_data
             })
             equity_curve.append(cash)
 

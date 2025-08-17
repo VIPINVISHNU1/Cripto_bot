@@ -4,6 +4,7 @@ from strategy.smc_imbalance_orderblock import SMCImbalanceOrderBlockStrategy
 from strategy.smc_orderblock import SMCOrderBlockStrategy
 from strategy.smc_fvg_bounce_strategy import SMCFVGStrategy
 from strategy.smc_fvg_loose_strategy import SMCFVGLooseStrategy
+from strategy.swing_ema_rsi_volume_strategy import SwingEMARsiVolumeStrategy
 
 from utils.logger import get_logger
 from utils.risk import RiskManager
@@ -22,7 +23,22 @@ def main():
 
     broker = BinanceBroker(config["broker"], logger)
 
-    strategy = SMCFVGLooseStrategy(config["strategy"], broker)
+    # Select strategy based on config
+    strategy_name = config["strategy"].get("name", "smc_fvg_loose")
+    
+    if strategy_name == "swing_ema_rsi_volume":
+        strategy = SwingEMARsiVolumeStrategy(config["strategy"], broker, logger)
+    elif strategy_name == "smc_fvg_loose":
+        strategy = SMCFVGLooseStrategy(config["strategy"], broker)
+    elif strategy_name == "smc_fvg_bounce":
+        strategy = SMCFVGStrategy(config["strategy"], broker)
+    elif strategy_name == "smc_orderblock":
+        strategy = SMCOrderBlockStrategy(config["strategy"], broker, risk_manager, logger)
+    elif strategy_name == "smc_imbalance_orderblock":
+        strategy = SMCImbalanceOrderBlockStrategy(config["strategy"], broker, risk_manager, logger)
+    else:
+        logger.error(f"Unknown strategy: {strategy_name}")
+        return
 
     if config["mode"] == "backtest":
         # Ensure all data uses timestamp as index!

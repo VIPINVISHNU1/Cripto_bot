@@ -36,3 +36,39 @@
 2025-08-17 00:22:36,139 INFO Max Drawdown: 3.34, Sharpe Ratio: -2.67
 2025-08-17 13:33:45,197 INFO Starting backtest for BTCUSDT from 2024-08-01 to 2025-08-01 on 4h
 2025-08-17 13:33:45,199 ERROR No data retrieved for backtest.
+2025-08-17 13:39:25,874 INFO SwingEMARsiVolumeStrategy initialized with parameters: EMA(12,26), RSI(14), ATR(14), Risk(2.0%)
+2025-08-17 13:39:26,007 INFO Generated 5 signals from 1200 bars
+2025-08-17 13:39:26,036 INFO Generated 0 signals from 240 bars
+2025-08-17 13:39:26,065 INFO Generated 1 signals from 240 bars
+2025-08-17 13:39:26,094 INFO Generated 4 signals from 240 bars
+2025-08-17 13:39:26,123 INFO Generated 0 signals from 240 bars
+2025-08-17 13:39:26,152 INFO Generated 0 signals from 240 bars
+2025-08-17 13:39:26,152 INFO Cross-validation completed: 5 folds
+2025-08-17 13:39:37,150 INFO SwingEMARsiVolumeStrategy initialized with parameters: EMA(12,26), RSI(14), ATR(14), Risk(2.0%)
+2025-08-17 13:39:37,150 INFO Starting backtest for BTCUSDT from 2024-08-01 to 2025-08-01 on 4h
+2025-08-17 13:39:37,153 ERROR No data retrieved for backtest.
+2025-08-17 13:41:19,190 INFO SwingEMARsiVolumeStrategy initialized with parameters: EMA(12,26), RSI(14), ATR(14), Risk(2.0%)
+2025-08-17 13:41:19,190 INFO Starting backtest for BTCUSDT from 2025-06-01 to 2025-08-15 on 4h
+2025-08-17 13:41:19,190 INFO Reading data from BTCUSDT_4h_ohlcv.csv
+2025-08-17 13:41:19,197 INFO Loaded 451 bars from 2025-06-01 00:00:00 to 2025-08-15 00:00:00
+2025-08-17 13:41:19,198 INFO Running in-sample backtest on 315 bars (70%)
+2025-08-17 13:41:19,235 INFO Generated 0 signals from 315 bars
+2025-08-17 13:41:19,251 INFO Running out-of-sample backtest on 136 bars (30%)
+2025-08-17 13:41:19,269 INFO Generated 0 signals from 136 bars
+2025-08-17 13:41:19,276 INFO In-sample results:
+2025-08-17 13:41:19,276 INFO No trades executed.
+2025-08-17 13:41:19,276 INFO Out-of-sample results:
+2025-08-17 13:41:19,276 INFO No trades executed.
+2025-08-17 13:42:08,735 INFO SwingEMARsiVolumeStrategy initialized with parameters: EMA(12,26), RSI(14), ATR(14), Risk(2.0%)
+2025-08-17 13:42:08,735 INFO Starting backtest for BTCUSDT from 2025-06-01 to 2025-08-15 on 4h
+2025-08-17 13:42:08,735 INFO Reading data from BTCUSDT_4h_ohlcv.csv
+2025-08-17 13:42:08,742 INFO Loaded 451 bars from 2025-06-01 00:00:00 to 2025-08-15 00:00:00
+2025-08-17 13:42:08,742 INFO Running in-sample backtest on 315 bars (70%)
+2025-08-17 13:42:08,778 INFO Generated 0 signals from 315 bars
+2025-08-17 13:42:08,793 INFO Running out-of-sample backtest on 136 bars (30%)
+2025-08-17 13:42:08,811 INFO Generated 1 signals from 136 bars
+2025-08-17 13:42:08,819 INFO In-sample results:
+2025-08-17 13:42:08,819 INFO No trades executed.
+2025-08-17 13:42:08,819 INFO Out-of-sample results:
+2025-08-17 13:42:08,819 INFO Total P&L: -67.41, Trades: 1, Win Rate: 0.00%
+2025-08-17 13:42:08,819 INFO Max Drawdown: 108.91, Sharpe Ratio: -0.79

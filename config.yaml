@@ -7,19 +7,66 @@ broker:
   testnet: true  # true for testnet, false for live
 
 strategy:
-  name: smc_orderblock
+  name: swing_ema_rsi_volume
   symbol: "BTCUSDT"
   timeframe: "4h"
   position_size: 0.001
   max_positions: 1
+  
+  # EMA parameters
+  ema_fast: 12
+  ema_slow: 26
+  
+  # RSI parameters
+  rsi_period: 14
+  rsi_oversold: 40  # More sensitive
+  rsi_overbought: 60  # More sensitive
+  
+  # Volume parameters
+  volume_ma_period: 20
+  volume_threshold: 1.2  # Lower threshold for more signals
+  
+  # ATR and position sizing
+  atr_period: 14
+  risk_per_trade: 0.02
+  
+  # Risk management
+  stop_loss_atr_mult: 2.0
+  take_profit_atr_mult: 3.0
+  trailing_stop_atr_mult: 1.5
+  
+  # Additional indicators
+  use_macd: true
+  use_bollinger: true
+  use_adx: true
+  
+  # MACD parameters
+  macd_fast: 12
+  macd_slow: 26
+  macd_signal: 9
+  
+  # Bollinger Bands parameters
+  bb_period: 20
+  bb_std: 2.0
+  
+  # ADX parameters
+  adx_period: 14
+  adx_threshold: 25
+  
+  # Cross-validation
+  use_cross_validation: true
+  cv_folds: 5
 
 backtest:
-  start: "2024-08-01"
-  end: "2025-08-01"
+  start: "2025-06-01"
+  end: "2025-08-15"
 
 risk:
   max_daily_loss: 100
   max_trades_per_day: 5
+  max_consecutive_losses: 5
+  max_position_size: 1.0
+  min_position_size: 0.001
 
 logging:
   level: INFO
