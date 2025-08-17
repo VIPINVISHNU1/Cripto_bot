@@ -226,8 +226,17 @@ class Backtester:
         win_rate = win / len(pnl) if pnl else 0
         max_dd, _ = self.max_drawdown(eq_curve)
         sharpe = self.sharpe_ratio(eq_curve)
+        sortino = self.sortino_ratio(eq_curve)
+        profit_factor = self.profit_factor(trades)
+        expectancy = self.expectancy(trades)
+        
+        avg_win = np.mean([p for p in pnl if p > 0]) if win > 0 else 0
+        avg_loss = np.mean([p for p in pnl if p <= 0]) if loss > 0 else 0
+        
         self.logger.info(f"Total P&L: {total:.2f}, Trades: {len(trades)}, Win Rate: {win_rate:.2%}")
-        self.logger.info(f"Max Drawdown: {max_dd:.2f}, Sharpe Ratio: {sharpe:.2f}")
+        self.logger.info(f"Avg Win: {avg_win:.2f}, Avg Loss: {avg_loss:.2f}")
+        self.logger.info(f"Profit Factor: {profit_factor:.2f}, Expectancy: {expectancy:.2f}")
+        self.logger.info(f"Max Drawdown: {max_dd:.2f}, Sharpe: {sharpe:.2f}, Sortino: {sortino:.2f}")
 
         # Plot equity curve and drawdown
         plt.figure(figsize=(12,6))
@@ -267,3 +276,43 @@ class Backtester:
         if returns.std() == 0:
             return 0
         return np.sqrt(252) * excess.mean() / returns.std()
+    
+    @staticmethod
+    def sortino_ratio(equity, risk_free=0):
+        """Calculate Sortino ratio using downside deviation"""
+        returns = np.diff(equity) / equity[:-1]
+        excess = returns - risk_free/252
+        downside_returns = excess[excess < 0]
+        if len(downside_returns) == 0:
+            return float('inf') if excess.mean() > 0 else 0
+        downside_std = np.std(downside_returns)
+        if downside_std == 0:
+            return 0
+        return np.sqrt(252) * excess.mean() / downside_std
+    
+    @staticmethod
+    def profit_factor(trades):
+        """Calculate profit factor (gross profit / gross loss)"""
+        pnl = [t["pnl"] for t in trades]
+        wins = [p for p in pnl if p > 0]
+        losses = [p for p in pnl if p <= 0]
+        
+        gross_profit = sum(wins) if wins else 0
+        gross_loss = abs(sum(losses)) if losses else 0
+        
+        return gross_profit / gross_loss if gross_loss > 0 else float('inf')
+    
+    @staticmethod
+    def expectancy(trades):
+        """Calculate expectancy per trade"""
+        if not trades:
+            return 0
+        pnl = [t["pnl"] for t in trades]
+        wins = [p for p in pnl if p > 0]
+        losses = [p for p in pnl if p <= 0]
+        
+        win_rate = len(wins) / len(pnl)
+        avg_win = np.mean(wins) if wins else 0
+        avg_loss = np.mean(losses) if losses else 0
+        
+        return (win_rate * avg_win) + ((1 - win_rate) * avg_loss)

@@ -7,14 +7,23 @@ broker:
   testnet: true  # true for testnet, false for live
 
 strategy:
-  name: smc_orderblock
+  name: smc_fvg_loose_enhanced
   symbol: "BTCUSDT"
   timeframe: "4h"
   position_size: 0.001
   max_positions: 1
+  # Enhanced parameters
+  rsi_period: 14
+  ema_period: 50
+  atr_period: 14
+  volume_period: 20
+  rsi_oversold: 25
+  rsi_overbought: 75
+  min_validation_score: 3
+  imbalance_threshold: 0.0002
 
 backtest:
-  start: "2024-08-01"
+  start: "2025-05-25"
   end: "2025-08-01"
 
 risk:
@@ -25,7 +34,7 @@ logging:
   level: INFO
   file: "data/trading.log"
 
-# Realism and anti-overfitting settings:
+# Enhanced realism and anti-overfitting settings:
 fee_rate: 0.001        # 0.1% spot fee; use 0.0004 for futures
 slippage_rate: 0.0005  # 0.05% slippage per trade
 min_order_size: 0.001  # For BTCUSDT; adjust per symbol
@@ -33,4 +42,3 @@ in_sample_pct: 0.7     # 70% for in-sample, 30% for out-of-sample
 initial_balance: 10000 # Starting balance
 stop_loss_pct: 0.01        # 1% stop loss
 take_profit_pct: 0.02      # 2% take profit
-imbalance_threshold: 0.0002

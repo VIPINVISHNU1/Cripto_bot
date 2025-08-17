@@ -102,42 +102,79 @@ class SMCFVGEnhancedStrategy:
         validation_score = 0
         reasons = []
         
+        # Calculate trend strength (price relative to EMA)
+        price_distance_pct = abs(bar['close'] - ema) / ema * 100 if ema > 0 else 0
+        trend_strength = min(price_distance_pct / 2.0, 1.0)  # Normalize to 0-1, with 2% being max
+        
         if fvg_type == "bullish":
-            # RSI not oversold (avoid catching falling knife)
-            if rsi > self.rsi_oversold:
+            # RSI favorable for longs (not oversold, allows for momentum)
+            if 30 < rsi < 70:  # Sweet spot - not extreme
+                validation_score += 2
+                reasons.append("RSI_balanced")
+            elif rsi > self.rsi_oversold:
                 validation_score += 1
-                reasons.append("RSI_favorable")
+                reasons.append("RSI_ok")
             
-            # Price above EMA (trend confirmation)
-            if bar['close'] > ema:
-                validation_score += 2  # Higher weight for trend
+            # Strong bullish trend confirmation
+            if bar['close'] > ema * 1.005:  # At least 0.5% above EMA
+                validation_score += 2
+                reasons.append("strong_uptrend")
+            elif bar['close'] > ema:
+                validation_score += 1
                 reasons.append("above_EMA")
                 
         elif fvg_type == "bearish":
-            # RSI not overbought
-            if rsi < self.rsi_overbought:
+            # RSI favorable for shorts
+            if 30 < rsi < 70:  # Sweet spot
+                validation_score += 2
+                reasons.append("RSI_balanced")
+            elif rsi < self.rsi_overbought:
                 validation_score += 1
-                reasons.append("RSI_favorable")
+                reasons.append("RSI_ok")
             
-            # Price below EMA (trend confirmation)
-            if bar['close'] < ema:
-                validation_score += 2  # Higher weight for trend
+            # Strong bearish trend confirmation
+            if bar['close'] < ema * 0.995:  # At least 0.5% below EMA
+                validation_score += 2
+                reasons.append("strong_downtrend")
+            elif bar['close'] < ema:
+                validation_score += 1
                 reasons.append("below_EMA")
         
-        # Volume confirmation (require above average volume)
-        if volume > volume_ma * self.volume_multiplier:
+        # Volume confirmation (more lenient)
+        volume_ratio = volume / volume_ma if volume_ma > 0 else 1
+        if volume_ratio > 1.5:  # High volume
+            validation_score += 2
+            reasons.append("high_volume")
+        elif volume_ratio > 1.0:  # Above average volume
             validation_score += 1
-            reasons.append("volume_confirm")
+            reasons.append("volume_ok")
         
-        # ATR validation (avoid low volatility periods)
+        # ATR validation (volatility check)
         if atr > 0:
             atr_pct = atr / bar['close'] * 100
-            if atr_pct > 0.5:  # At least 0.5% ATR
+            if atr_pct > 0.8:  # Good volatility
                 validation_score += 1
-                reasons.append("volatility_ok")
+                reasons.append("good_volatility")
+            elif atr_pct > 0.5:  # Minimum volatility
+                validation_score += 0.5
+                reasons.append("min_volatility")
         
-        # Require minimum score for signal validation
-        min_score = 3  # Require at least 3 points for validation
+        # Trend momentum (recent price action)
+        if idx >= 3:
+            recent_bars = data.iloc[idx-2:idx+1]
+            if fvg_type == "bullish":
+                # Check for bullish momentum (higher lows or closes)
+                if recent_bars['close'].iloc[-1] > recent_bars['close'].iloc[0]:
+                    validation_score += 1
+                    reasons.append("bullish_momentum")
+            else:
+                # Check for bearish momentum (lower highs or closes)
+                if recent_bars['close'].iloc[-1] < recent_bars['close'].iloc[0]:
+                    validation_score += 1
+                    reasons.append("bearish_momentum")
+        
+        # Require minimum score for signal validation (balanced)
+        min_score = 4  # Balanced requirement for validation
         is_valid = validation_score >= min_score
         
         return is_valid, {
@@ -145,8 +182,9 @@ class SMCFVGEnhancedStrategy:
             "reasons": reasons,
             "rsi": rsi,
             "ema": ema,
-            "volume_ratio": volume / volume_ma if volume_ma > 0 else 0,
-            "atr_pct": atr / bar['close'] * 100 if atr > 0 else 0
+            "volume_ratio": volume_ratio,
+            "atr_pct": atr / bar['close'] * 100 if atr > 0 else 0,
+            "trend_strength": trend_strength
         }
     
     def get_dynamic_levels(self, data, idx, entry_price, trade_type):
