@@ -1,0 +1,47 @@
+mode: backtest  # live or backtest
+
+broker:
+  name: binance
+  api_key: "your_api_key"
+  api_secret: "your_api_secret"
+  testnet: true  # true for testnet, false for live
+
+strategy:
+  name: smc_orderblock
+  symbol: "BTCUSDT"
+  timeframe: "4h"
+  position_size: 0.001
+  max_positions: 1
+
+backtest:
+  start: "2024-08-01"
+  end: "2025-08-01"
+
+risk:
+  max_daily_loss: 100
+  max_trades_per_day: 5
+  risk_per_trade_pct: 0.02  # Conservative 2% risk per trade
+
+logging:
+  level: INFO
+  file: "data/trading.log"
+
+# Quick test settings (6 months only):
+fee_rate: 0.001        # 0.1% spot fee
+slippage_rate: 0.001   # Increased slippage for conservatism
+min_order_size: 0.001  # For BTCUSDT
+initial_balance: 10000 # Starting balance
+
+# Conservative enhanced strategy parameters
+target_monthly_return: 0.15           # More conservative 15% monthly target
+stop_loss_range: [0.015, 0.02, 0.025]  # Smaller range for speed
+take_profit_range: [0.02, 0.025, 0.03] # Smaller range for speed
+enhanced_backtest: true              # Use enhanced monthly backtesting
+walk_forward_optimization: true      # Use walk-forward validation
+lookback_months: 3                   # Fewer months for optimization (speed)
+
+# Quick test period - just 6 months
+test_start_year: 2024
+test_start_month: 10
+test_end_year: 2025
+test_end_month: 3

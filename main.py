@@ -5,6 +5,7 @@ from strategy.smc_fvg_loose_strategy import SMCFVGLooseStrategy
 from utils.logger import get_logger
 from utils.risk import RiskManager
 from backtest.enhanced_backtester import EnhancedBacktester
+from backtest.robust_backtester import RobustBacktester
 
 import pandas as pd
 
@@ -17,12 +18,20 @@ except ImportError:
     BINANCE_AVAILABLE = False
     print("Binance client not available, using mock broker only")
 
-def load_config():
-    with open("config.yaml", "r") as f:
+def load_config(config_file="config.yaml"):
+    with open(config_file, "r") as f:
         return yaml.safe_load(f)
 
 def main():
-    config = load_config()
+    # Allow configuration file selection
+    import sys
+    if len(sys.argv) > 1:
+        config_file = sys.argv[1]
+        print(f"Using configuration file: {config_file}")
+    else:
+        config_file = "config.yaml"
+    
+    config = load_config(config_file)
     logger = get_logger(config["logging"])
     risk_manager = RiskManager(config["risk"], logger)
 
@@ -41,8 +50,17 @@ def main():
     strategy = SMCFVGLooseStrategy(config["strategy"], broker)
 
     if config["mode"] == "backtest":
-        # Check if enhanced backtesting is enabled
-        if config.get("enhanced_backtest", False):
+        # Check which type of backtesting to use
+        if config.get("walk_forward_optimization", False):
+            logger.info("Starting robust walk-forward backtesting...")
+            
+            # Use robust backtester with walk-forward optimization
+            robust_backtester = RobustBacktester(config, strategy, logger)
+            monthly_results = robust_backtester.run_robust_backtest()
+            
+            logger.info(f"Robust backtest completed. Analyzed {len(monthly_results)} months.")
+            
+        elif config.get("enhanced_backtest", False):
             logger.info("Starting enhanced monthly backtesting...")
             
             # Use enhanced backtester for monthly analysis
@@ -53,7 +71,6 @@ def main():
         else:
             if BINANCE_AVAILABLE:
                 # Original backtesting approach
-                # Ensure all data uses timestamp as index!
                 orig_get_historical_klines = broker.get_historical_klines
                 def get_historical_klines_with_index(symbol, timeframe, start, end):
                     df = orig_get_historical_klines(symbol, timeframe, start, end)

@@ -162,3 +162,119 @@
 2025-08-17 15:49:39,203 INFO Performance charts saved to data/strategy_performance_charts.png
 2025-08-17 15:49:39,203 INFO Comprehensive report generated
 2025-08-17 15:49:39,203 INFO Enhanced backtest completed. Analyzed 61 months.
+2025-08-17 15:55:23,857 INFO Using MockBroker for enhanced backtesting
+2025-08-17 15:55:23,857 INFO Starting robust walk-forward backtesting...
+2025-08-17 15:55:23,857 INFO Starting robust walk-forward backtest from 2020-08 to 2025-08
+2025-08-17 15:55:23,858 INFO Collecting historical data...
+2025-08-17 15:55:23,975 INFO Processing month: 2020-08
+2025-08-17 15:55:24,861 INFO Month 2020-08: Profit 4.26%, Trades: 30, Win Rate: 50.0%, SL: 0.025, TP: 0.035
+2025-08-17 15:55:24,861 INFO Processing month: 2020-09
+2025-08-17 15:55:25,685 INFO Month 2020-09: Profit 30.47%, Trades: 30, Win Rate: 50.0%, SL: 0.015, TP: 0.035
+2025-08-17 15:55:25,685 INFO Processing month: 2020-10
+2025-08-17 15:55:27,712 INFO Month 2020-10: Profit 10.86%, Trades: 30, Win Rate: 53.3%, SL: 0.020, TP: 0.030
+2025-08-17 15:55:27,712 INFO Processing month: 2020-11
+2025-08-17 15:55:31,146 INFO Month 2020-11: Profit 19.81%, Trades: 30, Win Rate: 53.3%, SL: 0.020, TP: 0.035
+2025-08-17 15:55:31,146 INFO Processing month: 2020-12
+2025-08-17 15:55:37,069 INFO Month 2020-12: Profit -21.82%, Trades: 30, Win Rate: 30.0%, SL: 0.025, TP: 0.035
+2025-08-17 15:55:37,069 INFO Processing month: 2021-01
+2025-08-17 15:55:45,302 INFO Month 2021-01: Profit -25.67%, Trades: 30, Win Rate: 26.7%, SL: 0.020, TP: 0.030
+2025-08-17 15:55:45,302 INFO Processing month: 2021-02
+2025-08-17 15:55:57,406 INFO Month 2021-02: Profit 7.03%, Trades: 30, Win Rate: 40.0%, SL: 0.015, TP: 0.035
+2025-08-17 15:55:57,406 INFO Processing month: 2021-03
+2025-08-17 15:56:09,388 INFO Month 2021-03: Profit -28.08%, Trades: 30, Win Rate: 20.0%, SL: 0.015, TP: 0.035
+2025-08-17 15:56:09,388 INFO Processing month: 2021-04
+2025-08-17 15:56:20,954 INFO Month 2021-04: Profit 0.11%, Trades: 30, Win Rate: 36.7%, SL: 0.015, TP: 0.035
+2025-08-17 15:56:20,954 INFO Processing month: 2021-05
+2025-08-17 15:56:33,101 INFO Month 2021-05: Profit 22.18%, Trades: 30, Win Rate: 46.7%, SL: 0.015, TP: 0.035
+2025-08-17 15:56:33,101 INFO Processing month: 2021-06
+2025-08-17 15:56:45,325 INFO Month 2021-06: Profit -21.80%, Trades: 30, Win Rate: 30.0%, SL: 0.025, TP: 0.035
+2025-08-17 15:56:45,325 INFO Processing month: 2021-07
+2025-08-17 15:56:57,320 INFO Month 2021-07: Profit 18.53%, Trades: 30, Win Rate: 50.0%, SL: 0.015, TP: 0.030
+2025-08-17 15:56:57,321 INFO Processing month: 2021-08
+2025-08-17 15:57:09,553 INFO Month 2021-08: Profit -19.05%, Trades: 30, Win Rate: 36.7%, SL: 0.015, TP: 0.020
+2025-08-17 15:57:09,553 INFO Processing month: 2021-09
+2025-08-17 15:57:22,117 INFO Month 2021-09: Profit 0.17%, Trades: 30, Win Rate: 36.7%, SL: 0.015, TP: 0.035
+2025-08-17 15:57:22,117 INFO Processing month: 2021-10
+2025-08-17 15:57:34,315 INFO Month 2021-10: Profit 11.65%, Trades: 30, Win Rate: 46.7%, SL: 0.015, TP: 0.030
+2025-08-17 15:57:34,315 INFO Processing month: 2021-11
+2025-08-17 15:57:46,718 INFO Month 2021-11: Profit -12.20%, Trades: 30, Win Rate: 30.0%, SL: 0.015, TP: 0.035
+2025-08-17 15:57:46,718 INFO Processing month: 2021-12
+2025-08-17 15:57:59,272 INFO Month 2021-12: Profit -13.59%, Trades: 30, Win Rate: 36.7%, SL: 0.020, TP: 0.030
+2025-08-17 15:57:59,272 INFO Processing month: 2022-01
+2025-08-17 15:58:11,503 INFO Month 2022-01: Profit 5.49%, Trades: 30, Win Rate: 50.0%, SL: 0.020, TP: 0.030
+2025-08-17 15:58:11,503 INFO Processing month: 2022-02
+2025-08-17 15:58:23,628 INFO Month 2022-02: Profit 11.64%, Trades: 30, Win Rate: 46.7%, SL: 0.015, TP: 0.030
+2025-08-17 15:58:23,628 INFO Processing month: 2022-03
+2025-08-17 15:58:36,388 INFO Month 2022-03: Profit -5.27%, Trades: 30, Win Rate: 43.3%, SL: 0.025, TP: 0.035
+2025-08-17 15:58:36,388 INFO Processing month: 2022-04
+2025-08-17 15:58:48,806 INFO Month 2022-04: Profit 5.19%, Trades: 30, Win Rate: 43.3%, SL: 0.015, TP: 0.030
+2025-08-17 15:58:48,806 INFO Processing month: 2022-05
+2025-08-17 15:59:01,546 INFO Month 2022-05: Profit 5.20%, Trades: 30, Win Rate: 43.3%, SL: 0.015, TP: 0.030
+2025-08-17 15:59:01,546 INFO Processing month: 2022-06
+2025-08-17 15:59:13,828 INFO Month 2022-06: Profit -30.72%, Trades: 30, Win Rate: 20.0%, SL: 0.015, TP: 0.030
+2025-08-17 15:59:13,828 INFO Processing month: 2022-07
+2025-08-17 15:59:26,293 INFO Month 2022-07: Profit 0.42%, Trades: 30, Win Rate: 46.7%, SL: 0.020, TP: 0.030
+2025-08-17 15:59:26,293 INFO Processing month: 2022-08
+2025-08-17 15:59:38,596 INFO Month 2022-08: Profit 11.60%, Trades: 30, Win Rate: 46.7%, SL: 0.015, TP: 0.030
+2025-08-17 15:59:38,596 INFO Processing month: 2022-09
+2025-08-17 15:59:51,439 INFO Month 2022-09: Profit 0.14%, Trades: 30, Win Rate: 36.7%, SL: 0.015, TP: 0.035
+2025-08-17 15:59:51,439 INFO Processing month: 2022-10
+2025-08-17 16:00:03,743 INFO Month 2022-10: Profit -9.76%, Trades: 30, Win Rate: 40.0%, SL: 0.025, TP: 0.035
+2025-08-17 16:00:03,744 INFO Processing month: 2022-11
+2025-08-17 16:00:16,215 INFO Month 2022-11: Profit -28.01%, Trades: 30, Win Rate: 20.0%, SL: 0.015, TP: 0.035
+2025-08-17 16:00:16,216 INFO Processing month: 2022-12
+2025-08-17 16:00:28,680 INFO Month 2022-12: Profit -17.84%, Trades: 30, Win Rate: 26.7%, SL: 0.015, TP: 0.035
+2025-08-17 16:00:28,680 INFO Processing month: 2023-01
+2025-08-17 16:00:41,219 INFO Month 2023-01: Profit 11.61%, Trades: 30, Win Rate: 46.7%, SL: 0.015, TP: 0.030
+2025-08-17 16:00:41,219 INFO Processing month: 2023-02
+2025-08-17 16:00:53,446 INFO Month 2023-02: Profit -44.78%, Trades: 30, Win Rate: 6.7%, SL: 0.015, TP: 0.035
+2025-08-17 16:00:53,446 INFO Processing month: 2023-03
+2025-08-17 16:01:06,109 INFO Month 2023-03: Profit -8.35%, Trades: 30, Win Rate: 40.0%, SL: 0.015, TP: 0.025
+2025-08-17 16:01:06,109 INFO Processing month: 2023-04
+2025-08-17 16:01:17,322 INFO Month 2023-04: Profit -21.70%, Trades: 30, Win Rate: 33.3%, SL: 0.020, TP: 0.025
+2025-08-17 16:01:17,322 INFO Processing month: 2023-05
+2025-08-17 16:01:28,609 INFO Month 2023-05: Profit -0.67%, Trades: 30, Win Rate: 46.7%, SL: 0.025, TP: 0.035
+2025-08-17 16:01:28,609 INFO Processing month: 2023-06
+2025-08-17 16:01:39,973 INFO Month 2023-06: Profit 30.42%, Trades: 30, Win Rate: 50.0%, SL: 0.015, TP: 0.035
+2025-08-17 16:01:39,973 INFO Processing month: 2023-07
+2025-08-17 16:01:51,268 INFO Month 2023-07: Profit -3.77%, Trades: 30, Win Rate: 40.0%, SL: 0.020, TP: 0.035
+2025-08-17 16:01:51,268 INFO Processing month: 2023-08
+2025-08-17 16:02:02,513 INFO Month 2023-08: Profit -6.37%, Trades: 30, Win Rate: 46.7%, SL: 0.020, TP: 0.025
+2025-08-17 16:02:02,513 INFO Processing month: 2023-09
+2025-08-17 16:02:14,317 INFO Month 2023-09: Profit -13.96%, Trades: 30, Win Rate: 36.7%, SL: 0.025, TP: 0.035
+2025-08-17 16:02:14,317 INFO Processing month: 2023-10
+2025-08-17 16:03:06,157 INFO Using MockBroker for enhanced backtesting
+2025-08-17 16:03:06,157 INFO Starting robust walk-forward backtesting...
+2025-08-17 16:03:06,157 INFO Starting robust walk-forward backtest from 2024-10 to 2025-03
+2025-08-17 16:03:06,157 INFO Collecting historical data...
+2025-08-17 16:03:06,170 INFO Processing month: 2024-10
+2025-08-17 16:03:06,716 INFO Month 2024-10: Profit -13.63%, Trades: 30, Win Rate: 36.7%, SL: 0.020, TP: 0.030
+2025-08-17 16:03:06,716 INFO Processing month: 2024-11
+2025-08-17 16:03:07,325 INFO Month 2024-11: Profit 11.65%, Trades: 30, Win Rate: 46.7%, SL: 0.015, TP: 0.030
+2025-08-17 16:03:07,325 INFO Processing month: 2024-12
+2025-08-17 16:03:08,483 INFO Month 2024-12: Profit 1.95%, Trades: 30, Win Rate: 46.7%, SL: 0.015, TP: 0.025
+2025-08-17 16:03:08,483 INFO Processing month: 2025-01
+2025-08-17 16:03:10,652 INFO Month 2025-01: Profit 25.84%, Trades: 30, Win Rate: 53.3%, SL: 0.015, TP: 0.030
+2025-08-17 16:03:10,652 INFO Processing month: 2025-02
+2025-08-17 16:03:12,705 INFO Month 2025-02: Profit 2.24%, Trades: 30, Win Rate: 53.3%, SL: 0.015, TP: 0.020
+2025-08-17 16:03:12,706 INFO Processing month: 2025-03
+2025-08-17 16:03:14,816 INFO Month 2025-03: Profit -17.55%, Trades: 30, Win Rate: 33.3%, SL: 0.015, TP: 0.025
+2025-08-17 16:04:07,242 INFO Using MockBroker for enhanced backtesting
+2025-08-17 16:04:07,242 INFO Starting robust walk-forward backtesting...
+2025-08-17 16:04:07,242 INFO Starting robust walk-forward backtest from 2024-10 to 2025-03
+2025-08-17 16:04:07,242 INFO Collecting historical data...
+2025-08-17 16:04:07,255 INFO Processing month: 2024-10
+2025-08-17 16:04:07,906 INFO Month 2024-10: Profit -11.16%, Trades: 30, Win Rate: 43.3%, SL: 0.015, TP: 0.020
+2025-08-17 16:04:07,906 INFO Processing month: 2024-11
+2025-08-17 16:04:08,444 INFO Month 2024-11: Profit -13.07%, Trades: 30, Win Rate: 36.7%, SL: 0.015, TP: 0.025
+2025-08-17 16:04:08,444 INFO Processing month: 2024-12
+2025-08-17 16:04:09,696 INFO Month 2024-12: Profit 5.42%, Trades: 30, Win Rate: 50.0%, SL: 0.020, TP: 0.030
+2025-08-17 16:04:09,696 INFO Processing month: 2025-01
+2025-08-17 16:04:12,152 INFO Month 2025-01: Profit -12.10%, Trades: 30, Win Rate: 33.3%, SL: 0.015, TP: 0.030
+2025-08-17 16:04:12,152 INFO Processing month: 2025-02
+2025-08-17 16:04:14,131 INFO Month 2025-02: Profit -21.81%, Trades: 30, Win Rate: 30.0%, SL: 0.020, TP: 0.030
+2025-08-17 16:04:14,131 INFO Processing month: 2025-03
+2025-08-17 16:04:16,342 INFO Month 2025-03: Profit -3.25%, Trades: 30, Win Rate: 43.3%, SL: 0.015, TP: 0.025
+2025-08-17 16:04:18,254 INFO Enhanced performance charts saved to data/robust_strategy_analysis.png
+2025-08-17 16:04:18,254 INFO Robust analysis report generated
+2025-08-17 16:04:18,254 INFO Robust backtest completed. Analyzed 6 months.
