@@ -64,5 +64,5 @@ class SMCFVGLooseStrategy:
                     })
                     fvg["touched"] = True
 
-        print(f"DEBUG: FVGs detected: {len(fvg_list)}, Trades generated: {len(trades)}")
+        print(f"FVGs detected: {len(fvg_list)}, Trades generated: {len(trades)}")
         return trades
