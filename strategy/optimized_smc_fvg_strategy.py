@@ -21,17 +21,17 @@ class OptimizedSMCFVGStrategy:
         self.adx_period = 14
         self.volume_period = 20
         
-        # More permissive balanced thresholds
+        # Improved parameters for better win rate
         self.rsi_oversold = 50
         self.rsi_overbought = 50
-        self.trend_strength_threshold = 15
-        self.volume_multiplier = 1.0
-        self.min_confluence_score = 3
+        self.trend_strength_threshold = 12   # Lower for more signals
+        self.volume_multiplier = 1.0         # Not too restrictive
+        self.min_confluence_score = 4        # Balanced threshold
         
-        # Conservative risk management for higher win rate
-        self.atr_stop_multiplier = 1.2   # Tighter stops
+        # Improved risk management for better win rate
+        self.atr_stop_multiplier = 1.0   # Tighter stops for better win rate
         self.atr_tp_multiplier = 3.5     # Good risk-reward
-        self.min_risk_reward = 2.0
+        self.min_risk_reward = 2.5       # Better risk-reward for higher win rate
         
         # More permissive market regime
         self.trending_adx_threshold = 15
@@ -117,8 +117,6 @@ class OptimizedSMCFVGStrategy:
         """Detect quality FVGs with balanced filtering"""
         fvg_list = []
         
-        print(f"DEBUG: Starting FVG detection from index {max(25, self.ema_slow_period)} to {len(data)}")
-        
         for i in range(max(25, self.ema_slow_period), len(data)):
             c1 = data.iloc[i-2]
             c2 = data.iloc[i-1]
@@ -129,20 +127,15 @@ class OptimizedSMCFVGStrategy:
             bearish_fvg = c1['high'] < c3['low']
             
             if bullish_fvg or bearish_fvg:
-                print(f"DEBUG: Found {'bullish' if bullish_fvg else 'bearish'} FVG at index {i}")
-                
                 # Check if indicators are available
                 if pd.isna(data['rsi'].iloc[i]) or pd.isna(data['ema_fast'].iloc[i]):
-                    print(f"DEBUG: Skipping FVG at {i} due to missing indicators")
                     continue
                 
                 direction = 'bullish' if bullish_fvg else 'bearish'
                 score = self.calculate_balanced_confluence_score(data, i, direction)
-                print(f"DEBUG: FVG at {i} has confluence score: {score}")
                 
                 if score >= self.min_confluence_score:
                     context_valid = self.validate_fvg_context(data, i, direction)
-                    print(f"DEBUG: Context validation for FVG at {i}: {context_valid}")
                     
                     if context_valid:
                         if direction == 'bullish':
@@ -170,9 +163,7 @@ class OptimizedSMCFVGStrategy:
                                 "momentum_score": data['momentum_score'].iloc[i]
                             }
                         fvg_list.append(fvg)
-                        print(f"DEBUG: Added FVG at {i} to list")
         
-        print(f"DEBUG: Total FVGs after filtering: {len(fvg_list)}")
         return fvg_list
     
     def calculate_balanced_confluence_score(self, data, idx, direction):
@@ -379,31 +370,31 @@ class OptimizedSMCFVGStrategy:
         if volume_ratio < 0.8:
             return False
         
-        # Direction-specific validations
+        # Direction-specific validations (more permissive)
         if direction == 'long':
-            # For longs: avoid overbought conditions
-            if current_rsi > 65:
+            # For longs: avoid extreme overbought conditions
+            if current_rsi > 70:
                 return False
                 
-            # Prefer bullish momentum
-            if bar['momentum_score'] < 2:
+            # Prefer some momentum but not too strict
+            if bar['momentum_score'] < 1:
                 return False
                 
-            # Check for bullish market structure
-            if bar['ema_fast'] < bar['ema_slow'] * 0.995:  # Allow small tolerance
+            # Check for bullish market structure (allow small tolerance)
+            if bar['ema_fast'] < bar['ema_slow'] * 0.99:  # Slightly more tolerant
                 return False
                 
         elif direction == 'short':
-            # For shorts: avoid oversold conditions
-            if current_rsi < 35:
+            # For shorts: avoid extreme oversold conditions
+            if current_rsi < 30:
                 return False
                 
-            # Prefer bearish momentum
-            if bar['momentum_score'] < 2:
+            # Prefer some momentum but not too strict
+            if bar['momentum_score'] < 1:
                 return False
                 
-            # Check for bearish market structure
-            if bar['ema_fast'] > bar['ema_slow'] * 1.005:  # Allow small tolerance
+            # Check for bearish market structure (allow small tolerance)
+            if bar['ema_fast'] > bar['ema_slow'] * 1.01:  # Slightly more tolerant
                 return False
         
         # Check confluence score at entry

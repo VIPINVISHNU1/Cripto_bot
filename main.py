@@ -5,7 +5,7 @@ from strategy.smc_imbalance_orderblock import SMCImbalanceOrderBlockStrategy
 from strategy.smc_orderblock import SMCOrderBlockStrategy
 from strategy.smc_fvg_bounce_strategy import SMCFVGStrategy
 from strategy.smc_fvg_loose_strategy import SMCFVGLooseStrategy
-from strategy.optimized_smc_fvg_strategy import OptimizedSMCFVGStrategy
+from strategy.final_enhanced_smc_fvg_strategy import FinalEnhancedSMCFVGStrategy
 
 from utils.logger import get_logger
 from utils.risk import RiskManager
@@ -25,8 +25,8 @@ def main():
     # Use mock broker for backtesting to avoid network issues
     broker = MockBroker(config["broker"], logger)
 
-    # Use optimized strategy targeting 80% win rate
-    strategy = OptimizedSMCFVGStrategy(config["strategy"], broker)
+    # Use final enhanced strategy targeting 80%+ win rate
+    strategy = FinalEnhancedSMCFVGStrategy(config["strategy"], broker)
 
     if config["mode"] == "backtest":
         # Ensure all data uses timestamp as index!
