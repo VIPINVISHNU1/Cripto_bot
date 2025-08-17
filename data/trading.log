@@ -34,3 +34,72 @@
 2025-08-17 00:22:36,139 INFO Out-of-sample results:
 2025-08-17 00:22:36,139 INFO Total P&L: -2.97, Trades: 2, Win Rate: 0.00%
 2025-08-17 00:22:36,139 INFO Max Drawdown: 3.34, Sharpe Ratio: -2.67
+2025-08-17 16:15:55,368 INFO Testing basic functionality
+2025-08-17 16:16:47,052 INFO Generated 36 parameter combinations
+2025-08-17 16:16:47,052 INFO Starting parameter optimization...
+2025-08-17 16:16:47,061 INFO Data split: 347 in-sample, 149 out-of-sample bars
+2025-08-17 16:16:47,061 INFO Generated 36 parameter combinations
+2025-08-17 16:16:47,061 INFO Limited to 20 combinations
+2025-08-17 16:16:47,061 INFO Processing combination 1/20
+2025-08-17 16:16:49,116 ERROR Error in combination 0: cannot unpack non-iterable numpy.float64 object
+2025-08-17 16:16:49,222 ERROR Error in combination 1: cannot unpack non-iterable numpy.float64 object
+2025-08-17 16:16:49,328 ERROR Error in combination 2: cannot unpack non-iterable numpy.float64 object
+2025-08-17 16:16:49,433 ERROR Error in combination 3: cannot unpack non-iterable numpy.float64 object
+2025-08-17 16:16:49,539 ERROR Error in combination 4: cannot unpack non-iterable numpy.float64 object
+2025-08-17 16:16:49,645 ERROR Error in combination 5: cannot unpack non-iterable numpy.float64 object
+2025-08-17 16:16:49,751 ERROR Error in combination 6: cannot unpack non-iterable numpy.float64 object
+2025-08-17 16:16:49,856 ERROR Error in combination 7: cannot unpack non-iterable numpy.float64 object
+2025-08-17 16:16:49,962 ERROR Error in combination 8: cannot unpack non-iterable numpy.float64 object
+2025-08-17 16:16:50,068 ERROR Error in combination 9: cannot unpack non-iterable numpy.float64 object
+2025-08-17 16:16:50,068 INFO Processing combination 11/20
+2025-08-17 16:16:50,175 ERROR Error in combination 10: cannot unpack non-iterable numpy.float64 object
+2025-08-17 16:16:50,280 ERROR Error in combination 11: cannot unpack non-iterable numpy.float64 object
+2025-08-17 16:16:50,386 ERROR Error in combination 12: cannot unpack non-iterable numpy.float64 object
+2025-08-17 16:16:50,492 ERROR Error in combination 13: cannot unpack non-iterable numpy.float64 object
+2025-08-17 16:16:50,598 ERROR Error in combination 14: cannot unpack non-iterable numpy.float64 object
+2025-08-17 16:16:50,704 ERROR Error in combination 15: cannot unpack non-iterable numpy.float64 object
+2025-08-17 16:16:50,811 ERROR Error in combination 16: cannot unpack non-iterable numpy.float64 object
+2025-08-17 16:16:50,917 ERROR Error in combination 17: cannot unpack non-iterable numpy.float64 object
+2025-08-17 16:16:51,024 ERROR Error in combination 18: cannot unpack non-iterable numpy.float64 object
+2025-08-17 16:16:51,130 ERROR Error in combination 19: cannot unpack non-iterable numpy.float64 object
+2025-08-17 16:16:51,131 INFO Results saved to data/optimization_results/optimization_results_20250817_161651.json
+2025-08-17 16:16:51,131 INFO Optimization completed. 0 successful combinations.
+2025-08-17 16:17:43,387 INFO Generated 36 parameter combinations
+2025-08-17 16:17:43,387 INFO Starting parameter optimization...
+2025-08-17 16:17:43,395 INFO Data split: 347 in-sample, 149 out-of-sample bars
+2025-08-17 16:17:43,395 INFO Generated 36 parameter combinations
+2025-08-17 16:17:43,395 INFO Limited to 20 combinations
+2025-08-17 16:17:43,395 INFO Processing combination 1/20
+2025-08-17 16:17:43,759 ERROR Error in combination 0: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-08-17 16:17:43,866 ERROR Error in combination 1: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-08-17 16:17:43,973 ERROR Error in combination 2: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-08-17 16:17:44,080 ERROR Error in combination 3: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-08-17 16:17:44,187 ERROR Error in combination 4: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-08-17 16:17:44,295 ERROR Error in combination 5: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-08-17 16:17:44,401 ERROR Error in combination 6: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-08-17 16:17:44,508 ERROR Error in combination 7: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-08-17 16:17:44,616 ERROR Error in combination 8: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-08-17 16:17:44,723 ERROR Error in combination 9: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-08-17 16:17:44,723 INFO Processing combination 11/20
+2025-08-17 16:17:44,829 ERROR Error in combination 10: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-08-17 16:17:44,936 ERROR Error in combination 11: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-08-17 16:17:45,043 ERROR Error in combination 12: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-08-17 16:17:45,150 ERROR Error in combination 13: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-08-17 16:17:45,257 ERROR Error in combination 14: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-08-17 16:17:45,363 ERROR Error in combination 15: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-08-17 16:17:45,470 ERROR Error in combination 16: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-08-17 16:17:45,577 ERROR Error in combination 17: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-08-17 16:17:45,683 ERROR Error in combination 18: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-08-17 16:17:45,790 ERROR Error in combination 19: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-08-17 16:17:45,790 INFO Results saved to data/optimization_results/optimization_results_20250817_161745.json
+2025-08-17 16:17:45,790 INFO Optimization completed. 0 successful combinations.
+2025-08-17 16:19:46,499 INFO Generated 36 parameter combinations
+2025-08-17 16:19:46,499 INFO Starting parameter optimization...
+2025-08-17 16:19:46,507 INFO Data split: 347 in-sample, 149 out-of-sample bars
+2025-08-17 16:19:46,507 INFO Generated 36 parameter combinations
+2025-08-17 16:19:46,507 INFO Limited to 20 combinations
+2025-08-17 16:19:46,507 INFO Processing combination 1/20
+2025-08-17 16:19:48,170 INFO Processing combination 11/20
+2025-08-17 16:19:49,587 INFO Results saved to data/optimization_results/optimization_results_20250817_161949.json
+2025-08-17 16:19:49,587 INFO Optimization completed. 20 successful combinations.
+2025-08-17 16:19:49,591 INFO Analysis saved to data/optimization_results/analysis_20250817_161949.json and data/optimization_results/detailed_results_20250817_161949.csv
