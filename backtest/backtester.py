@@ -124,14 +124,24 @@ class Backtester:
                         entry_price = prev_bar["close"] * (1 + self.slippage_rate)
                         entry_time = bar_time
                         position = "long"
-                        stop_price = entry_price * (1 - self.stop_loss_pct)
-                        tp_price = entry_price * (1 + self.take_profit_pct)
+                        # Use dynamic targets if available
+                        if "stop_loss" in sig and "take_profit" in sig:
+                            stop_price = sig["stop_loss"]
+                            tp_price = sig["take_profit"]
+                        else:
+                            stop_price = entry_price * (1 - self.stop_loss_pct)
+                            tp_price = entry_price * (1 + self.take_profit_pct)
                     elif sig["type"] == "short":
                         entry_price = prev_bar["close"] * (1 - self.slippage_rate)
                         entry_time = bar_time
                         position = "short"
-                        stop_price = entry_price * (1 + self.stop_loss_pct)
-                        tp_price = entry_price * (1 - self.take_profit_pct)
+                        # Use dynamic targets if available
+                        if "stop_loss" in sig and "take_profit" in sig:
+                            stop_price = sig["stop_loss"]
+                            tp_price = sig["take_profit"]
+                        else:
+                            stop_price = entry_price * (1 + self.stop_loss_pct)
+                            tp_price = entry_price * (1 - self.take_profit_pct)
                 # If already in position, consider exit on opposite signal (market exit)
                 elif (position == "long" and sig["type"] == "short") or (position == "short" and sig["type"] == "long"):
                     size = max(np.floor(self.position_size / min_size) * min_size, min_size)
